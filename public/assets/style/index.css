@@ -1,0 +1,161 @@
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400);
+
+body {
+font: normal normal 13px/16px "Open Sans", sans-serif;
+background: #ccc;
+}
+
+.container{
+padding: 20px;
+width: 100%;;
+margin: 0 auto;
+background: white;
+border-radius: 5px;}
+
+form {
+display: inline-block;
+}
+
+input{
+padding: 4px 15px 4px 5px;
+}
+
+#button{
+display: inline-block;
+background-color:#fc999b;
+color:#ffffff;
+border-radius: 5px;
+text-align:center;
+margin-top:2px;
+padding: 5px 15px;
+}
+
+#button:hover{
+cursor: pointer;
+opacity: .8;}
+
+ol {padding-left: 20px;}
+
+ol li {padding: 5px;color:#000;}
+
+ol li:nth-child(even){background: #dfdfdf;}
+
+.strike{text-decoration: line-through;}
+
+li:hover{
+  cursor: pointer;
+ }
+ .Header-logo {
+   height: 25px;
+   margin-top: 10px;
+ }
+
+ .navbar-brand {
+   width: 300px;
+   border-right: solid 1px;;
+   margin-right: 20px;
+ }
+
+ .navbar-profilepic {
+   width: 50px;
+   height: 50px;
+   margin: 0 10px 0 20px;
+ }
+
+ .brand-name {
+   margin-top: 20px;
+   color: #820017;
+ }
+
+ .notifications-bar {
+   margin-top: 8px;
+ }
+ .badge {
+   margin-left: 5px;
+ }
+ .container{
+     width: 100%;
+   }
+
+ .jumbotron {
+  height: 300px;
+
+ }
+ .home {
+   background-image: url("../img/jumbo.jpg");
+   background-repeat: no-repeat;
+   background-position: center;
+   -webkit-background-size: cover;
+   background-size: cover;
+ }
+
+ h1 .homeBanner {
+   padding-top: 90px;
+   color: #fff;
+   text-align: left;
+   font-size: 200px;
+ }
+
+ button {
+   float: left;
+ }
+
+ #logo {
+   width: 350px;
+   align-items: center;
+   margin-top: -10px;
+ }
+
+ body {
+   background-color: #B2EBF2;
+ }
+
+ .holder .img-circle {
+     width: 200px;
+     height: 200px;
+     border-radius: 50%;
+     margin: 20px 0 20px 0;
+ }
+
+ .holder {
+   border-style: solid;
+   text-align: center;
+ }
+
+ .buttons-holder {
+   text-align: center;
+   margin: 30px;
+ }
+
+ .profIcons {
+   width: 50px;
+   margin: 10px;
+ }
+
+.actionButtons {
+
+  margin: 10px;
+  margin-left: 245px;
+
+}
+
+.jumbotron.teams {
+  background-color: #B2EBF2;
+  text-align: center;
+  overflow: auto;
+}
+.jumbotron.teams h1 {
+  color: #B29600;
+}
+.editUsername:hover {
+  cursor: pointer;
+}
+.editSkills:hover {
+  cursor: pointer;
+}
+
+.createButton {
+  width: 100%;
+  margin-bottom: 20px;
+}

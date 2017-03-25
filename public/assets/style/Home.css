@@ -1,0 +1,33 @@
+.container{
+    width: 100%;
+  }
+
+.jumbotron {
+ height: 300px;
+ background-image: url("./jumbo.jpg");
+ background-repeat: no-repeat;
+ background-position: center;
+ -webkit-background-size: cover;
+ background-size: cover;
+}
+
+h1 {
+  padding-top: 90px;
+  color: #fff;
+  text-align: left;
+  font-size: 200px;
+}
+
+button {
+  float: left;
+}
+
+#logo {
+  width: 350px;
+  align-items: center;
+  margin-top: -10px;
+}
+
+body {
+  background-color: #B2EBF2;
+}

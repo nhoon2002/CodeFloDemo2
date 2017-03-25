@@ -1,0 +1,28 @@
+.Header-logo {
+  height: 25px;
+  margin-top: 10px;
+}
+
+.navbar-brand {
+  width: 300px;
+  border-right: solid 1px;;
+  margin-right: 20px;
+}
+
+.navbar-profilepic {
+  width: 50px;
+  height: 50px;
+  margin: 0 10px 0 20px;
+}
+
+.brand-name {
+  margin-top: 20px;
+  color: #820017;
+}
+
+.notifications-bar {
+  margin-top: 8px;
+}
+.badge {
+  margin-left: 5px;
+}
