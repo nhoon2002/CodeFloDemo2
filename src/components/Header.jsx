@@ -63,12 +63,12 @@ class Header extends React.Component {
                         <span className="badge">4</span>
                       </button>
                     </li>
-                    <li>
+                    <li className="navbarPicture">
                       <Link to="/profile">
                       <img className='navbar-profilepic img-circle' src={ avatar ? avatar : "http://www.liveanimalslist.com/birds/images/hen-white-and-black-color.jpg" } alt='profilepic'/>
                       </Link>
                     </li>
-                    <li onClick={this.logOut}>Logout</li>
+                    <li className="navbarLogout" onClick={this.logOut}>Logout</li>
 
 
                 </ul>
@@ -102,7 +102,7 @@ class Header extends React.Component {
                 </ul>
 
                 <ul className="nav navbar-nav navbar-right">
-                    <li>Login</li>
+                    <li className="navbarLogin">Login</li>
                 </ul>
               </div>
             </div>

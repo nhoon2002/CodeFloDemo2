@@ -19,7 +19,7 @@ const AsyncExample = React.createClass({
         options={this.state.options}
         placeholder="Search for a user..."
         renderMenuItemChildren={(option, props, index) => (
-          <div onClick={this._handleClick} data-user={option.username}>
+          <div className="searchBar" onClick={this._handleClick} data-user={option.username}>
             <img
               data-user={option.username}
               className='img-circle'

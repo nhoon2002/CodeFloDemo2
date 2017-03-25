@@ -1,5 +1,5 @@
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400);
 
 body {
 font: normal normal 13px/16px "Open Sans", sans-serif;
@@ -69,7 +69,7 @@ li:hover{
  }
 
  .notifications-bar {
-   margin-top: 8px;
+   margin-top: 15px;
  }
  .badge {
    margin-left: 5px;
@@ -136,7 +136,7 @@ li:hover{
 .actionButtons {
 
   margin: 10px;
-  margin-left: 245px;
+  margin-left: 210px;
 
 }
 
@@ -158,4 +158,18 @@ li:hover{
 .createButton {
   width: 100%;
   margin-bottom: 20px;
+}
+
+.bootstrap-typeahead-input {
+  background-color: black;
+  margin-top: 10px;
+}
+.navbarPicture {
+  margin-top: -10px;
+}
+.navbarLogout {
+  margin-top: 20px;
+}
+.navbarLogin {
+  margin-top: 15px;
 }
