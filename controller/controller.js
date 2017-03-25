@@ -150,19 +150,10 @@ router.get('/register/:query', function(req,res) {
 
   console.log("hi",query);
 
-    db.users.findAll({
-
-      where: {
-        username: {$like: '%'+query+'%'}
-      }
-    }).then(function (data) {
-        // console.log(data);
-        // var array1 = [];
-        // array1.push(data);
-        res.json(data);
-          // return data;
-
-
+    monUser.find({"username" : {$regex : ".*"+query+".*"}}
+    , function(err, docs) {
+      console.log(docs);
+      res.json(docs);
 
     });
 
@@ -281,8 +272,8 @@ router.post('/savepic/:id', function(req, res){
 });
 
 // router.post('/edit/username', function(req, res){
-  
-  
+
+
 // })
 
 router.get('*', function(req,res) {

@@ -23,7 +23,9 @@ const AsyncExample = React.createClass({
             <img
               data-user={option.username}
               className='img-circle'
-              src='http://placehold.it/30x30'
+              src=
+
+              {option.avatar ? option.avatar : "https://avatars2.githubusercontent.com/u/1530139?v=3"}
               style={{
 
                 marginRight: '10px'
@@ -61,7 +63,7 @@ const AsyncExample = React.createClass({
   _handleClick(e){
     var id = e.target.dataset.user;
     console.log(id);
-    this.props.router.push('/user/'+id);
+    this.props.router.push('/profile/'+id);
   }
 });
 export default AsyncExample;

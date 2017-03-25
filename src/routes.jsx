@@ -6,6 +6,7 @@ import App from './containers/App.jsx';
 // import Main from './containers/Main.jsx';
 import Home from './containers/Home.jsx';
 import Profile from './containers/Profile.jsx';
+import ProfileDynamic from './containers/ProfileDynamic.jsx';
 // import TodoApp from './containers/TodoApp.jsx';
 import Register from './containers/Register.jsx';
 import NewProject from './containers/NewProject.jsx';
@@ -26,6 +27,7 @@ const theRoutes = (
 
 		      <IndexRoute onEnter={checkSesh} component={Home}/>
 		      <Route path="/profile" onEnter={checkSesh} component= {Profile} />
+		      <Route path="/profile/:user" onEnter={checkSesh} component= {ProfileDynamic} />
 		      <Route path="/newproject" onEnter={checkSesh} component= {NewProject} />
 		      <Route path="/newproject/:id" onEnter={checkSesh} component= {ProjectDetails} />
 
