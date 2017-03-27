@@ -31,7 +31,7 @@ class NewProject extends Component {
 		         close={this.props.closeModalT}
 		         show={this.props.teamModal}
 		         create={this.props.createTeam}
-						 router={this.props.router}
+				 router={this.props.router}
 						//  updateTeams = {this.props.updateTeams
 		      />
 
