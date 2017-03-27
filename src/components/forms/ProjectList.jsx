@@ -53,7 +53,7 @@ class ProjectList extends React.Component {
   render() {
     // const reverseState = this.state.teams.reverse()
     return (
-      <div className='container general-projects'>
+      <div className='container'>
 
           {/* Using the .reverse() method to show most revent at the top. */}
 
