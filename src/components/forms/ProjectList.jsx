@@ -53,13 +53,13 @@ class ProjectList extends React.Component {
   render() {
     // const reverseState = this.state.teams.reverse()
     return (
-      <div className='container'>
+      <div className='container general-projects'>
 
           {/* Using the .reverse() method to show most revent at the top. */}
 
           {this.state.teams.map((team, i) =>
 
-            <div className='jumbotron teams' onClick={this.handleClick} key={i} data-mid={team._id}>
+            <div className='jumbotron teams general-projects' onClick={this.handleClick} key={i} data-mid={team._id}>
               <h1 data-mid={team._id}>{team.teamname}</h1>
               <h2 data-mid={team._id}>{team.tech}</h2>
               <h3 data-mid={team._id}>{team.description}</h3>
