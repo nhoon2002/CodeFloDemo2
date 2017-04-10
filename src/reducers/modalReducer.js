@@ -8,7 +8,9 @@
 
 export function modalReducer(state={
 		showModal: false,
-		loginModal: false
+		loginModal: false,
+		teamModal: false,
+		taskModal: false
 	}, action ) {
 
 
@@ -52,7 +54,18 @@ export function modalReducer(state={
 				teamModal: action.payload
 			}
 		}
-
+		case "OPEN_MODAL_TASK": {
+			return {
+				...state,
+				taskModal: action.payload
+			}
+		}
+		case "CLOSE_MODAL_TASK": {
+			return {
+				...state,
+				taskModal: action.payload
+			}
+		}
 		default: {
 			return state;
 		}

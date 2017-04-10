@@ -10,8 +10,12 @@ export function teamCreateReducer(state={teamnames: "", techs: "", descriptions:
         ...state,
         teamnames: action.payload.teamname,
         techs: action.payload.tech,
-        descriptions: action.payload.description };
+        descriptions: action.payload.description
       }
     }
+    default: {
+      return {...state}
+    }
     return state;
-  };
+  }
+}

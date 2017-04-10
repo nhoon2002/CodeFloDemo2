@@ -18,8 +18,7 @@ class Main extends Component {
 
 
         <div className="container Main-content">
-
-
+      {/*<iframe width="560" height="315" src="https://www.youtube.com/embed/xUxIlLWjkgk?autoplay=1&playlist=xUxIlLWjkgk&loop=1"></iframe>*/}
 
           {React.cloneElement(this.props.children, this.props)}
 

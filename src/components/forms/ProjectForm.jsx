@@ -31,8 +31,8 @@ class ProjectForm extends Component {
    		var formInput = {
    			teamname: this.refs.teamname.value,
    			description: this.refs.description.value,
-   			tech: this.refs.tech.value
-
+   			tech: this.refs.tech.value,
+        userID: this.props.user
    		}
 
    		console.log("FORMMMM INPUTTTT", formInput);

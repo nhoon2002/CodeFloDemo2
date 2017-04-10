@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import { browserHistory, Link } from "react-router";
+// import { Link } from 'react-router';
 
 class ProjectList extends React.Component {
   constructor(props) {
@@ -9,16 +11,16 @@ class ProjectList extends React.Component {
     this.state = {
       teams: []
     };
-    this.handleClick = this.handleClick.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
-    axios.get('/teams')
-      .then(res => {
-        const teams2 = res.data.map(obj => obj);
-        console.log('teams', teams2);
-        // const members = res.data.
-      });
+    // axios.get('/teams')
+    //   .then(res => {
+    //     const teams2 = res.data.map(obj => obj);
+    //     console.log('teams', teams2);
+    //     // const members = res.data.
+    //   });
 
       axios.get('/populate').then(res=> {
         console.log(res)
@@ -39,16 +41,7 @@ class ProjectList extends React.Component {
 	// 	}
 	// 	return false;
 	// }
-  handleClick(e) {
-    var id = e.target.dataset.mid;
-    console.log(id);
-    this.props.router.push('/newproject/'+id);
-    // KEEP IN MIND, THIS ONLY WORKS WHEN CLICKING ON THE DIV SPACES, NOT THE TEXT.
-    // <div className='container'>
-    //   <Header type="posts_show" postId={this.props.params.id}/>
-    //   <PostDetailsContainer id={this.props.params.id}/>
-    // </div>
-  }
+ 
 
   render() {
     // const reverseState = this.state.teams.reverse()
@@ -58,8 +51,8 @@ class ProjectList extends React.Component {
           {/* Using the .reverse() method to show most revent at the top. */}
 
           {this.state.teams.map((team, i) =>
-
-            <div className='jumbotron teams general-projects' onClick={this.handleClick} key={i} data-mid={team._id}>
+            <Link key={i} to={'/newproject/' + team._id}>
+            <div className='jumbotron teams general-projects'>
               <h1 data-mid={team._id}>{team.teamname}</h1>
               <h2 data-mid={team._id}>{team.tech}</h2>
               <h3 data-mid={team._id}>{team.description}</h3>
@@ -72,6 +65,7 @@ class ProjectList extends React.Component {
 
 
             </div>
+            </Link>
           )}
 
       </div>

@@ -101,9 +101,6 @@ class Header extends React.Component {
 
                 </ul>
 
-                <ul className="nav navbar-nav navbar-right">
-                    <li className="navbarLogin">Login</li>
-                </ul>
               </div>
             </div>
           </nav>
