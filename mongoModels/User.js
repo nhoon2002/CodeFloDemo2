@@ -27,15 +27,25 @@ var UserSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  lastUpdated: { 
+  lastUpdated: {
     type: Date
   },
   userAdmin: {
     default: false
   },
+
+  adminTeams: [{
+    type: Schema.Types.ObjectId,
+    ref: "Team"
+  }],
+
   team: [{
     type: Schema.Types.ObjectId,
     ref: "Team"
+  }],
+  task: [{
+      type: Schema.Types.ObjectId,
+      ref: "Task"
   }]
 });
 

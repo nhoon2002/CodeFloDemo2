@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Register from './Register.jsx';
 import LoginModal from '../components/LoginModal.jsx';
-import regisCont from './registerCont.jsx';
+// import regisCont from './registerCont.jsx';
 
 
 

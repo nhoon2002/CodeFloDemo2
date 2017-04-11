@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Todo = require('../mongoModels/Todo.js');
+var Task = require('../mongoModels/Task.js');
 var monUser = require('../mongoModels/User')
 var path = require('path');
 
@@ -21,23 +21,41 @@ router.get('/checkssion', function(req, res){
   res.json({ sessionUserId: req.session.userID, sessionUserInfo: req.session.userData })
 })
 
-router.post('/todo', function(req, res) {
+router.post('/assignTask', function(req, res) {
   console.log("\n");
-  console.log("controller router post", req.body);
-    // var todo = new Todo(req.body);
-    Todo.insertMany(req.body, function(err, doc) {
-      if(err) {
-        console.log(err);
-      } else {
-        console.log("\n");
-        console.log("TODO DOCS_______________________________@#$!@#$#@!@!#%!@#%!@#%",doc);
-        res.json(doc);
-      }
-    });
+  console.log("ASSIGN TASK REQ BODY", req.body);
 
+  var taskOBJ = {
+    task: req.body.task,
+    projectID: req.body.projectID
+  }
+
+  var newTask = new Task(taskOBJ);
+
+  newTask.save(function(err, doc){
+    if(err){
+      console.log(err)
+      res.send("Status" + err)
+    }else{
+      console.log("DOCS AFTER TASK SAVE", doc)
+
+      monUser.findOneAndUpdate({ "_id": req.body.userID }, { $push: {"task": doc._id} }).exec(function(err, doc){
+        console.log("DOCS IN USER UPDATE", doc)
+        res.json(doc);
+      });
+    }
+  });
 });
 
-
+router.get('/populate-tasks/:pID/:uID', function(req, res){
+  console.log("REQ PARAMS pID TASK POPULATE", req.params.pID)
+  console.log("REQ PARAMS uID TASK POPULATE", req.params.uID)
+  var query = { task: { $elemMatch: { projectID: req.params.pID }}}
+  monUser.findById({ "_id": req.params.uID }).populate({path: 'task', match: { projectID: req.params.pID } }).exec(function(err, docs){
+    console.log("POPULATE TASKS DOCS", docs)
+    res.json(docs);
+  })
+})
 
 router.post('/register', function(req, res){
 
@@ -119,8 +137,6 @@ router.post('/updatemember/:userid/:teamid', function(req, res) {
           res.json(obj);
         })
     })
-
-
 })
 
 router.get('/populate', function(req, res) {
@@ -136,8 +152,8 @@ router.get('/populate', function(req, res) {
            console.log("\n\nPOPULATE DOC",doc);
            res.json(doc);
          }
-           })
-       })
+      })
+})
 
 
 
@@ -156,18 +172,26 @@ router.get('/register/:query', function(req,res) {
       res.json(docs);
 
     });
-
-
 });
 
 
-router.get('/newProject/:id', function(req,res) {
+router.get('/getteaminfo/:id', function(req,res) {
   var id = req.params.id;
   console.log('controller: getting details for team:' + id );
 
-  Team.find({"_id": id}).exec(function(err, docs) {
-    console.log(docs);
-    res.json(docs)
+  var teamDetails = {};
+
+  Team.findById({"_id": id}).populate("teamMembers").exec(function(err, docs) {
+    console.log("PROJECT DETAILS DOCS", docs);
+    teamDetails.teamInfo = docs;
+
+      monUser.findById({"_id": docs.teamAdmin }, function(err, docs) {
+        teamDetails.admin = docs.username;
+        console.log("ADMIN SEARCH IN TEAM DETAILS", docs)
+        console.log("TEAM DETAILS OBJECT", teamDetails);
+
+        res.json(teamDetails)
+      });
   });
 });
 
@@ -191,24 +215,31 @@ router.get('/register/users', function(req,res) {
 
 router.post('/teams', function(req, res){
 
-  var teamname = req.body.teamname;
-  var description = req.body.description;
-  var tech = req.body.tech;
-
 // TODO: validation for team creation
 
-    var teamInfo = {};
-    teamInfo.teamname = teamname;
-    teamInfo.description = description;
-    teamInfo.tech = tech;
+    var teamInfo = {
+
+      teamname: req.body.teamname,
+      description: req.body.description,
+      tech: req.body.tech,
+      teamAdmin: req.body.userID
+
+    };
+
+    var obj = {};
 
     var entry = new Team(teamInfo);
     entry.save(function(err, doc){
       if (err) {
          console.log(err);
       } else {
-         console.log(doc);
-         res.json(doc)
+         console.log("NEW TEAM CREATION DOCS", doc);
+         res.json(doc);
+         // obj.newTeam = doc;
+
+         // monUser.
+
+
       }
 
    });
@@ -240,6 +271,18 @@ router.post('/login',
       }
     })
 });
+
+// TODO: set the sockID to a store variable
+// router.post('/injectSock', function(req,res) {
+//   monUser.findOneAndUpdate({ _id: req.body.seshID },
+//   function(err, doc) {
+//     if(err) {
+//       console.log(err);
+//     } else {
+//
+//     }
+//   })
+// })
 
 router.get('/logout', function(req, res){
   console.log("SESSION OBJECT BEFORE DESRTOY", req.session)
@@ -277,9 +320,9 @@ router.post('/savepic/:id', function(req, res){
 // })
 
 router.get('*', function(req,res) {
-  console.log('sup');
-  res.sendFile(path.join(__dirname + "/../public/index.html"));
-  console.log('sup');
+
+  res.sendFile(path.join(__dirname + "/..", "public", "index.html"));
+
 });
 
 

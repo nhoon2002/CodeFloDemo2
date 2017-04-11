@@ -4,21 +4,24 @@ var Schema = mongoose.Schema;
 var TeamSchema = new Schema({
 
 
-   teamname: {
-        type: String,
-        trim: true,
-        required: "Team Name is Required"
-    },
-   description: {
-      type: String
-   },
-   tech: {
-      type: String
-   },
-    teamMembers: [{
-        type: Schema.Types.ObjectId,
-        ref: "User"
-    }]
+  teamname: {
+    type: String,
+    trim: true,
+    required: true
+  },
+  teamAdmin: {
+    type: String
+  },
+  description: {
+    type: String
+  },
+  tech: {
+    type: String
+  },
+  teamMembers: [{
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  }]
 
 
 });
