@@ -26,16 +26,21 @@ function mapStateToProps (state) {
 		showModal: state.modalReducer.showModal,
 		loginModal: state.modalReducer.loginModal,
 		teamModal: state.modalReducer.teamModal,
-
-		// loggedInUser: state.loginReducer.user,
+		taskModal: state.modalReducer.taskModal,
 		team: {
 			teamname: state.teamCreateReducer.teamnames,
 			tech: state.teamCreateReducer.techs,
 			description: state.teamCreateReducer.descriptions
 		},
-		todos: state.todosReducer.todos
+		userIDforTask: state.TaskReducer.userID,
+		userTasks: state.TaskReducer.tasks,
 		// allteams: state.teamUpdateReducer.teams,
-
+		teamDet: {
+			teamInfo: state.teamDetailsReducer.teamInfo,
+			admin: state.teamDetailsReducer.admin,
+			adminID: state.teamDetailsReducer.adminID,
+			members: state.teamDetailsReducer.teamMembers
+		}
 
 	};
 }

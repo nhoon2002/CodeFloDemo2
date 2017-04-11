@@ -180,3 +180,13 @@ img.img-circle {
 .navbarLogin {
   margin-top: 15px;
 }
+.general-projects:hover {
+  cursor: pointer;
+}
+.task-collapse{
+  padding-top: 30px;
+  width: 100%;
+}
+.open-collapse-button{
+  width: 100%;
+}

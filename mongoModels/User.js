@@ -33,12 +33,19 @@ var UserSchema = new Schema({
   userAdmin: {
     default: false
   },
-  // socketId: {
-  //   type: String
-  // },
+
+  adminTeams: [{
+    type: Schema.Types.ObjectId,
+    ref: "Team"
+  }],
+
   team: [{
     type: Schema.Types.ObjectId,
     ref: "Team"
+  }],
+  task: [{
+      type: Schema.Types.ObjectId,
+      ref: "Task"
   }]
 });
 

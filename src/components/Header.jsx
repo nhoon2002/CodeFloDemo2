@@ -1,9 +1,8 @@
 import React from 'react';
 import connect from 'react-redux';
-// import logo from './logo.svg';
-// import profilepic from './profilepic.jpg'
 import AsyncExample from './SearchForm.jsx';
 import { Link } from 'react-router';
+import Chat from '../containers/Chat.jsx';
 // import './Header.css';
 class Header extends React.Component {
 
@@ -60,9 +59,7 @@ class Header extends React.Component {
                 <ul className="nav navbar-nav navbar-right">
 
                     <li className="notifications-bar">
-                      <button className="btn btn-primary" type="button">Notifications
-                        <span className="badge">4</span>
-                      </button>
+                      <Chat {...this.props} />
                     </li>
                     <li className="navbarPicture">
                       <Link to="/profile">
@@ -102,9 +99,6 @@ class Header extends React.Component {
 
                 </ul>
 
-                <ul className="nav navbar-nav navbar-right">
-                    <li className="navbarLogin">Login</li>
-                </ul>
               </div>
             </div>
           </nav>

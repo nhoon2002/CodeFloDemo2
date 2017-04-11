@@ -5,10 +5,12 @@ import { browserHistory } from "react-router";
 
 export function addMember(userid, teamid) {
 	return function(dispatch) {
+		console.log("USER ID TEAMUPDATE", userid);
+		console.log("TEAM ID TEAMUPDATE", teamid);
 		axios.post(`/updatemember/${userid}/${teamid}`).then((data) => {
 					console.log("got to addMember", data);
 
-			 })
+		})
 
 	}
 }
@@ -54,6 +56,7 @@ export function createUser(formData) {
 }
 export function createTeam(formData) {
 	return function(dispatch) {
+		console.log("FORM DATA IN CREATE TEAM ACTION", formData)
 		axios.post('/teams', formData).then((data) => {
 			console.log("RETURN DATA FROM AXIOS TEAM POST", data);
 			console.log('\n\n');
@@ -70,7 +73,7 @@ export function createTeam(formData) {
 			teamnames = [];
 			techs = [];
 			descriptions = [];
-
+			browserHistory.push('/newproject');
 
 			}
 		);
@@ -97,6 +100,7 @@ export function checkSession() {
 		axios.get('/checkssion').then((data) => {
 			console.log("CHECK SESSION DATA", data);
 			if(data.data.sessionUserId){
+				console.log("INSIDE IF CHECK SESSION DATA", data);
 				dispatch({ type: "SESSION_EXIST", payload: {
 						checkSessionId : data.data.sessionUserId,
 						checkSessionUser: data.data.sessionUserInfo
@@ -187,6 +191,28 @@ export function closeModalT() {
 	}
 }
 
+export function openModalTask() {
+	return {
+		type: "OPEN_MODAL_TASK",
+		payload: true
+	}
+}
+
+export function closeModalTask() {
+	return {
+		type: "CLOSE_MODAL_TASK",
+		payload: false
+	}
+}
+
+export function taskAssignUser(id) {
+	console.log("TASK ASSIGN ID",id)
+	return {
+		type: "SET_USER_ID_FOR_TASK",
+		payload: id
+	}
+}
+
 export function getPhoto(username, id){
 	console.log("username", username)
 	return function (dispatch) {
@@ -238,3 +264,62 @@ export function getPhoto(username, id){
 // 		})
 // 	}
 // }
+
+export function teamDetails(id) {
+	return function(dispatch) {
+		console.log("IDDDD IN ACTION", id)
+	axios.get('/getteaminfo/' + id)
+      .then(res => {
+        console.log("response team details", res);
+        // const currentteam = res.data[0];
+        // console.log("CURRENT TEAM", currentteam);
+        // this.setState({ currentteam });
+        dispatch({ type: "SET_TEAM_DETAILS", payload: {
+        		teamInfo: res.data.teamInfo,
+        		admin: res.data.admin,
+        		adminID: res.data.teamInfo.teamAdmin,
+        		teamMembers: res.data.teamInfo.teamMembers
+        	} 
+        })
+
+      });
+	}
+}
+
+// export function	projectIdURL(id) {
+// 	return {
+// 		type: "SET_PROJECT_ID_URL",
+// 		payload: id
+// 	}
+// }
+
+export function updateUserTask(task, userID, projectID){
+
+	console.log("THE TASK IN ACTION", task);
+	console.log("USER ID IN ACTION", userID);
+	console.log("PROJECT ID IN ACTION", projectID);
+
+	var info = {
+		task,
+		userID,
+		projectID
+	}
+
+	console.log("INFO OBJECT", info);
+
+	return function(dispatch){
+		axios.post('/assignTask', info).then((res) => {
+			console.log("DATA IN ASSIGN TASK AXIOS", res)
+		})
+	}
+}
+
+export function populateTasks(projectID, userID){
+	return function(dispatch){
+	
+		return axios.get('/populate-tasks/' + projectID + '/' + userID).then((res) => {
+			console.log("RESPONSE IN POPULATE TASKS ACTIONS", res)
+			dispatch({ type: "SET_USER_TASKS", payload: res.data.task })
+		})
+	}
+}
