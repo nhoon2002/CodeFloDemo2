@@ -52,6 +52,7 @@ class Header extends React.Component {
                   <li><Link to="/profile">Profile</Link></li>
                   <li><Link to="/newproject">Projects</Link></li>
 
+
                   <li><AsyncExample {...this.props}/></li>
 
                 </ul>
@@ -97,7 +98,7 @@ class Header extends React.Component {
                 <ul className="nav navbar-nav">
                   <li><Link to="/">Home</Link></li>
 
-                  <li><AsyncExample/></li>
+                  {/* <li><AsyncExample/></li> */}
 
                 </ul>
 
