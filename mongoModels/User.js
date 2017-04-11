@@ -38,7 +38,7 @@ var UserSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Team"
   }],
-  task: [{  
+  task: [{ 
       type: Schema.Types.ObjectId,
       ref: "Task" 
   }]

@@ -66,7 +66,7 @@ class ProjectDetails extends React.Component {
         <div key={i} className='container'>
           <h4>{members.username}</h4>
 
-    
+ 
 
           <Tasks {...this.props} members={members} />
           {

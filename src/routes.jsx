@@ -28,8 +28,8 @@ const theRoutes = (
 		      <IndexRoute onEnter={checkSesh} component={Home}/>
 		      <Route path="/profile" onEnter={checkSesh} component= {Profile} />
 		      <Route path="/profile/:user" onEnter={checkSesh} component= {ProfileDynamic} />
-		      <Route path="/newproject" onEnter={checkSesh} component= {NewProject} />
 		      <Route path="/newproject/:id" onEnter={checkSesh} component= {ProjectDetails} />
+		      <Route path="/newproject" onEnter={checkSesh} component= {NewProject} />
 
 		    </Route>
 		</Router>

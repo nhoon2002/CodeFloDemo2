@@ -19,7 +19,7 @@ class Tasks extends Component {
 	    var projectID = this.props.router.params.id;
 	    var userID = event.target.getAttribute('data-memberID');
 
-	 
+	  
 	    this.props.populateTasks(projectID, userID).then(() => {
 	    	this.setState({tasks: this.props.userTasks})
 			console.log("PROPS USER TASKS", this.state.tasks)
