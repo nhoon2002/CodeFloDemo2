@@ -83,8 +83,8 @@ io.on('connection', function(socket) {
 		socket.leave('lobby');
 		console.log('Chat was closed by %s', user._id);
 		sockusers.splice(sockusers.indexOf(user._id), 1);
-		sockusersAvatar.splice(sockusersAvatar.indexOf(user.avatar), 1);
-		sockusersName.splice(sockusersName.indexOf(user.name), 1);
+		sockusersAvatar.splice(sockusers.indexOf(user._id), 1);
+		sockusersName.splice(sockusers.indexOf(user._id), 1);
 		console.log('after leaving. sockusers:%s', sockusers);
 		io.emit('sockusers', sockusers, sockusersAvatar, sockusersName);
 	});
