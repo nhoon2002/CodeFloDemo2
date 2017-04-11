@@ -27,12 +27,15 @@ var UserSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  lastUpdated: { 
+  lastUpdated: {
     type: Date
   },
   userAdmin: {
     default: false
   },
+  // socketId: {
+  //   type: String
+  // },
   team: [{
     type: Schema.Types.ObjectId,
     ref: "Team"

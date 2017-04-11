@@ -45,14 +45,14 @@ class ProfileDynamic extends Component {
 
               <hr />
               <br />
-              <div className="icons-holder">
+              {/* <div className="icons-holder">
                 <a target='_blank' href="http://www.github.com">
                   <img src="assets/icons/github.png" className="profIcons"/>
                 </a>
                 <a target='_blank' href="http://www.linkedin.com">
                   <img src="assets/icons/linkedin.png" className="profIcons"/>
                 </a>
-              </div>
+              </div> */}
               <div className="buttons-holder">
                   {/*<button type="button" className="btn btn-danger actionButtons">Add to Team</button>
                   <button type="button" className="btn btn-success actionButtons">Connect</button>*/}

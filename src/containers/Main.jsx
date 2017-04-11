@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import Header from '../components/Header.jsx';
+// import ChatBox2 from '../components/ChatBox2.jsx';
+import Chat from './Chat.jsx';
 
 
 
 class Main extends Component {
+
   render() {
     return (
       <div className="Main">
@@ -25,6 +28,8 @@ class Main extends Component {
 
 
         </div>
+
+      <Chat {...this.props} />
       </div>
 
     );

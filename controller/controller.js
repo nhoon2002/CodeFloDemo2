@@ -241,6 +241,18 @@ router.post('/login',
     })
 });
 
+// TODO: set the sockID to a store variable
+// router.post('/injectSock', function(req,res) {
+//   monUser.findOneAndUpdate({ _id: req.body.seshID },
+//   function(err, doc) {
+//     if(err) {
+//       console.log(err);
+//     } else {
+//
+//     }
+//   })
+// })
+
 router.get('/logout', function(req, res){
   console.log("SESSION OBJECT BEFORE DESRTOY", req.session)
   console.log("SESSION OBJECT BEFORE DESRTOY", req.session.userID)
