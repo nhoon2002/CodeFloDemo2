@@ -66,7 +66,13 @@ class ProjectDetails extends React.Component {
         <div key={i} className='container'>
           <h4>{members.username}</h4>
 
- 
+        {/*put the part where tasks are displayed into an another component Tasks since before
+        when it was in this component, the map function would give them all the same onClick function
+        that would set the same state to open the Collapse component. By putting it inside its own
+        component and then putting the component inside the map function, each component will have its
+        own version of the state `open`. That is why clicking on one would now not open all of them.
+        It like making a new instance of the Task compoent class with each map and they all have their
+        own copies of the variables/states and functions etc*/}
 
           <Tasks {...this.props} members={members} />
           {

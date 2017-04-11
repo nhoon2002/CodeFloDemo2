@@ -41,6 +41,9 @@ var UserSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Team"
   }],
+  //had to move the projectID property that was originally in here to the Task model and then use populate->
+    //path/match. This Will match all tasks in the Task model that has the property projectID equal to the id in req.params.pID,
+    //and pull those out.
   task: [{ 
       type: Schema.Types.ObjectId,
       ref: "Task" 

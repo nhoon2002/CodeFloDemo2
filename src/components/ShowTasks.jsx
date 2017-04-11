@@ -19,7 +19,9 @@ class Tasks extends Component {
 	    var projectID = this.props.router.params.id;
 	    var userID = event.target.getAttribute('data-memberID');
 
-	  
+		 //******can attach a .then to asynchronous actions. Since this action creator 
+	    //function this.props.populateTasks returns an axios request, I am able to attach a then() to it
+	    //and then set the state.	  
 	    this.props.populateTasks(projectID, userID).then(() => {
 	    	this.setState({tasks: this.props.userTasks})
 			console.log("PROPS USER TASKS", this.state.tasks)

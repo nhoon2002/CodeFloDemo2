@@ -152,7 +152,7 @@ io.on('connection', function(socket) {
 
 
 // -------------------------------------------------
-var databaseUri = "mongodb://localhost/sampledatabse10";
+var databaseUri = "mongodb://localhost/sampledatabse11";
 if (process.env.MONGODB_URI) {
 	mongoose.connect(process.env.MONGODB_URI);
 } else {

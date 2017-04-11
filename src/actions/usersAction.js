@@ -316,7 +316,8 @@ export function updateUserTask(task, userID, projectID){
 
 export function populateTasks(projectID, userID){
 	return function(dispatch){
-	
+	//Had to return this axios request so that in the component ShowTasks, I can attach a then()
+		//after this action creator gets called. See ****** in the comp0nent
 		return axios.get('/populate-tasks/' + projectID + '/' + userID).then((res) => {
 			console.log("RESPONSE IN POPULATE TASKS ACTIONS", res)
 			dispatch({ type: "SET_USER_TASKS", payload: res.data.task })
