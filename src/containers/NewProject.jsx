@@ -15,7 +15,7 @@
 //
 import React, { Component } from 'react';
 
-import ProjectForm from '../components/forms/ProjectForm.jsx';
+// import ProjectForm from '../components/forms/ProjectForm.jsx';
 import ProjectList from '../components/forms/ProjectList.jsx';
 class NewProject extends Component {
 
@@ -25,18 +25,18 @@ class NewProject extends Component {
    return(
 		 <div className='container'>
 
-	        <ProjectForm
-
-		        open={this.props.openModalT}
-		        close={this.props.closeModalT}
-		        show={this.props.teamModal}
-		        create={this.props.createTeam}
-				router={this.props.router}
-				user={this.props.CheckSeshUser}
-					//  updateTeams = {this.props.updateTeams
-	        />
 
 
+			 <ProjectForm
+
+				 open={this.props.openModalT}
+				 close={this.props.closeModalT}
+				 show={this.props.teamModal}
+				 create={this.props.createTeam}
+				 router={this.props.router}
+				 user={this.props.CheckSeshUserID}
+				 //  updateTeams = {this.props.updateTeams
+			 />
 			<ProjectList {...this.props}/>
 
 

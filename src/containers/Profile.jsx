@@ -46,10 +46,10 @@ class Profile extends Component {
               <br />
               <div className="icons-holder">
                 <a target='_blank' href="http://www.github.com">
-                  <img src="assets/icons/github.png" className="profIcons"/>
+                  <img src="/assets/icons/github.png" className="profIcons"/>
                 </a>
                 <a target='_blank' href="http://www.linkedin.com">
-                  <img src="assets/icons/linkedin.png" className="profIcons"/>
+                  <img src="/assets/icons/linkedin.png" className="profIcons"/>
                 </a>
               </div>
               <div className="buttons-holder">

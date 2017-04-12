@@ -38,7 +38,7 @@ router.post('/assignTask', function(req, res) {
       res.send("Status" + err)
     }else{
       console.log("DOCS AFTER TASK SAVE", doc)
-      
+
       monUser.findOneAndUpdate({ "_id": req.body.userID }, { $push: {"task": doc._id} }).exec(function(err, doc){
         console.log("DOCS IN USER UPDATE", doc)
         res.json(doc);
@@ -239,8 +239,7 @@ router.post('/teams', function(req, res){
       tech: req.body.tech,
       teamAdmin: req.body.userID,
       adminAvatar: req.body.avatar,
-      adminName: req.body.adminUsername
-      
+      adminName: req.body.adminUsername,
     };
 
     var obj = {};

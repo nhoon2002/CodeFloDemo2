@@ -14,6 +14,7 @@ import NewProject from './containers/NewProject.jsx';
 
 import ProjectDetails from './containers/ProjectDetails.jsx'
 import { checkSession } from './actions/usersAction';
+import Carousel from './containers/Carousel.jsx'
 
 
 const checkSesh = () => {
@@ -32,6 +33,8 @@ const theRoutes = (
 		      <Route path="/profile/:id" onEnter={checkSesh} component= {ProfileTwo} />
 		      <Route path="/newproject/:id" onEnter={checkSesh} component= {ProjectDetails} />
 		      <Route path="/newproject" onEnter={checkSesh} component= {NewProject} />
+		      <Route path="/carousel" onEnter={checkSesh} component= {Carousel} />
+
 
 
 		    </Route>

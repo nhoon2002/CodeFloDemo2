@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
 import io from 'socket.io-client';
+
 class ChatBox2 extends Component {
   constructor(props) {
   super(props);
@@ -52,10 +53,11 @@ class ChatBox2 extends Component {
 
     return (
       <div ref= "mountCheck">
-         <div className='jumbotron'>
+         <div className='jumbotron chatJumbo'>
          {this.state.message.map((msg, i) =>
-           <div className="chatMsg" key={i}><span>{msg.messageSender}({msg.messageSID}): {msg.messageBody} [{(new Date().toLocaleTimeString())}]</span>
-         </div>
+           <p className="chatMsg bubble" id={msg.messageSender} key={i}>
+             <span className={`Msg ${msg.messageSender}`}>{msg.messageSender}: {msg.messageBody}</span>
+         </p>
       )}
          </div>
 

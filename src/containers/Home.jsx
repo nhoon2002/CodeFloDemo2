@@ -16,7 +16,8 @@ const Home = React.createClass ({
 
             <div className="jumbotron home">
                 <h1 className="homeBanner">Welcome to</h1>
-								<img className="homeLogo" src='assets/img/loading2.gif' alt="logofull"/>
+				    <img className="homeLogo" src='assets/img/loading2.gif' alt="logofull"/>
+
 
                 {
                     this.props.isLoggedInCheck || this.props.isLoggedInReg
