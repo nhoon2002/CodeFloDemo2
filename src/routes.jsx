@@ -16,6 +16,7 @@ import ProjectDetails from './containers/ProjectDetails.jsx'
 import { checkSession } from './actions/usersAction';
 
 
+
 const checkSesh = () => {
 	console.log("INSIDE CHECK SESH FUNCTION");
 	store.dispatch(checkSession());
@@ -31,7 +32,10 @@ const theRoutes = (
 		      <Route path="/profile" onEnter={checkSesh} component= {Profile} />
 		      <Route path="/profile/:id" onEnter={checkSesh} component= {ProfileTwo} />
 		      <Route path="/newproject/:id" onEnter={checkSesh} component= {ProjectDetails} />
+
 		      <Route path="/newproject" onEnter={checkSesh} component= {NewProject} />
+
+
 
 
 		    </Route>

@@ -60,13 +60,18 @@ class ProjectForm extends Component {
 
         return (
            <div>
-             <Button
-            className="createButton"
-    				bsStyle="primary"
-    				onClick={this.open}
-    			>
-    				Create New Team
-    			</Button>
+             <div className='row'>
+
+               <div className='col-md-4 col-lg-4 col-sm-4'></div>
+               <div className='col-md-4 col-lg-4 col-sm-4 redbtnDiv'>
+               <button type='button' className='redbtn' onClick={this.open}><a className="round red">Create<span className="round">Add your own team! </span></a></button>
+               
+               </div>
+               <div className='col-md-4 col-lg-4 col-sm-4'></div>
+
+             </div>
+
+
 
 
     			<Modal show={this.props.show} onHide={this.close}>

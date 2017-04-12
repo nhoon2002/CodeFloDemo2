@@ -60,9 +60,18 @@ io.on('connection', function(socket) {
 
 // console.log(socket.client.conn.id);
 	console.log("connected.", socket.id);
-	socket.on('disconnect', function() {
+	socket.on('disconnect', function(user) {
+		if (user) {
+
+
 		console.log("%s disconnected", socket.id);
 		console.log(Object.keys(io.sockets.sockets));
+		sockusers.splice(sockusers.indexOf(user._id), 1);
+		sockusersAvatar.splice(sockusers.indexOf(user._id), 1);
+		sockusersName.splice(sockusers.indexOf(user._id), 1);
+		console.log('after leaving. sockusers:%s', sockusers);
+		io.emit('sockusers', sockusers, sockusersAvatar, sockusersName);
+	}
 		// socket.emit('get clients', 'updating clients after disconect');
 	});
 	socket.on('chat opened', function(user) {
@@ -83,8 +92,8 @@ io.on('connection', function(socket) {
 		socket.leave('lobby');
 		console.log('Chat was closed by %s', user._id);
 		sockusers.splice(sockusers.indexOf(user._id), 1);
-		sockusersAvatar.splice(sockusersAvatar.indexOf(user.avatar), 1);
-		sockusersName.splice(sockusersName.indexOf(user.name), 1);
+		sockusersAvatar.splice(sockusers.indexOf(user._id), 1);
+		sockusersName.splice(sockusers.indexOf(user._id), 1);
 		console.log('after leaving. sockusers:%s', sockusers);
 		io.emit('sockusers', sockusers, sockusersAvatar, sockusersName);
 	});
@@ -151,8 +160,14 @@ io.on('connection', function(socket) {
 // });
 
 
+
 // -------------------------------------------------
-var databaseUri = "mongodb://localhost/sampledatabse11";
+
+
+
+// -------------------------------------------------
+var databaseUri = "mongodb://localhost/sampledatabse1001";
+
 if (process.env.MONGODB_URI) {
 	mongoose.connect(process.env.MONGODB_URI);
 } else {
@@ -169,6 +184,10 @@ database.on("error", function(err) {
 database.once("open", function() {
   console.log("Mongoose connection successful.");
 });
+
+
+
+// -------------------------------------------------
 
 app.use(expressValidator({
   errorFormatter: function(param, msg, value) {
