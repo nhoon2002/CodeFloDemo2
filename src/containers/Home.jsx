@@ -9,26 +9,23 @@ import LoginModal from '../components/LoginModal.jsx';
 const Home = React.createClass ({
 	render() {
 
-        let random = null;
+        // let random = null;
 
         return (
         <div>
-
-            <div className="jumbotron home">
-                <h1 className="homeBanner">Welcome to</h1>
-
-								<img className="homeLogo" src='assets/img/loading2.gif' alt="logofull"/>
-
 
                 {
                     this.props.isLoggedInCheck || this.props.isLoggedInReg
 
                     ?
-
-                    random
+										<div className="jumbotron home">
+											<h1 className="homeBanner">Login Success!</h1>
+										</div>
 
                     :
-                    <div>
+										<div className="jumbotron home">
+											<h1 className="homeBanner">Welcome!</h1>
+
                     <Register
                         open={this.props.openModal}
                         close={this.props.closeModal}
@@ -46,7 +43,7 @@ const Home = React.createClass ({
                     </div>
                 }
 
-            </div>
+
 
 
         </div>

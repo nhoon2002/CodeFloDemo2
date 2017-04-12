@@ -1,8 +1,10 @@
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400);
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
 
 body {
-font: normal normal 13px/16px "Open Sans", sans-serif;
+font-family: 'Quicksand', sans-serif;
+/*font: normal normal 13px/16px "Open Sans", sans-serif;*/
 background: #ccc;
 }
 
@@ -46,9 +48,18 @@ ol li:nth-child(even){background: #dfdfdf;}
 li:hover{
   cursor: pointer;
  }
-.Header-logo {  
- width: 30px;
- height: 35px;
+
+ .navbar.navbar-default {
+   height: 80px;
+   font-family: 'Quicksand', sans-serif;
+
+ }
+ .navbar-nav li {
+   margin-top: 10px;
+ }
+.Header-logo {
+ width: 150px;
+ height: 50px;
  margin-top: 10px;
 }
 
@@ -69,8 +80,8 @@ li:hover{
  color: #820017;
 }
 
-.notifications-bar {
- margin-top: 15px;
+li.notifications-bar {
+ margin-top: 16px;
 }
 .badge {
  margin-left: 5px;
@@ -83,19 +94,22 @@ li:hover{
 height: 300px;
 
 }
-.home {
- background-image: url("../img/jumbo.jpg");
+.jumbotron.home {
+ background-image: url("../img/mockup.png");
+ /*padding: -20px;*/
+ height: 600px;
  background-repeat: no-repeat;
  background-position: center;
  -webkit-background-size: cover;
  background-size: cover;
 }
 
-h1 .homeBanner {
- padding-top: 90px;
- color: #fff;
+
+h1.homeBanner {
+
+ color: white;
  text-align: left;
- font-size: 200px;
+ font-size: 30px;
 }
 
 button {
@@ -109,11 +123,11 @@ button {
 }
 
 body {
- background-color: #B2EBF2;
+ background-image: url("../img/background-pattern.png");
 }
 img.img-circle {
-  width:50px;
-  height:50px;
+  width:70px;
+  height:70px;
 }
 .holder .img-circle {
    width: 200px;
@@ -172,11 +186,11 @@ img.img-circle {
   background-color: black;
   margin-top: 10px;
 }
-.navbarPicture {
+li.navbarPicture {
   margin-top: -10px;
 }
-.navbarLogout {
-  margin-top: 20px;
+li.navbarLogout {
+  margin-top: 30px;
 }
 .navbarLogin {
   margin-top: 15px;
@@ -302,24 +316,6 @@ border: #E1E3E5 solid 10px;
 
 
 /*/////////////CREATE TEAM BUTTON///////////////*/
-* {
-    margin: 0;
-    padding: 0;
-  	-moz-box-sizing: border-box;
-		-o-box-sizing: border-box;
-		-webkit-box-sizing: border-box;
-		box-sizing: border-box;
-	}
-
-	body {
-		width: 100%;
-		height: 100%;
-		font-family: "helvetica neue", helvetica, arial, sans-serif;
-		font-size: 13px;
-		text-align: center;
-		/*background: #333;*/
-	}
-
 
 
 	.redbtn {

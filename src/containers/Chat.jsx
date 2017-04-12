@@ -4,6 +4,7 @@ import ChatBox2 from '../components/ChatBox2.jsx'
 import { Link } from 'react-router';
 import { Button } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
+import * as Blueprint from "@blueprintjs/core";
 import io from 'socket.io-client';
 const clientSocket = io();
 
@@ -68,15 +69,14 @@ class Chat extends Component {
 
    return(
 		 <div>
-			 {/* <Link to='/chat/lobby'> */}
-				 <Button
-					 bsStyle="primary"
-					 bsSize="large"
-					 onClick={this.open}
-					 >
-					 Enter Chat Lobby
-				 </Button>
-		 	 {/* </Link> */}
+
+			 <button type="button" className="pt-button pt-large pt-intent-danger" onClick={this.open}>
+			  <span className="pt-icon-standard pt-icon-chat"></span>
+			  Enter Chat
+			  <span className="pt-icon-standard pt-icon-cross pt-align-right"></span>
+			 </button>
+
+
 			 <Modal show={this.state.showChat} onHide={this.close}>
 			           <Modal.Header closeButton>
 			             <Modal.Title>

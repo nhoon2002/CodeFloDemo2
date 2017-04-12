@@ -121,7 +121,7 @@ class ProjectList extends React.Component {
                   </Link>
                   <p data-mid={team._id}><strong>Tech Stack</strong>: {team.tech}</p>
                   <p data-mid={team._id}><br /><strong>Description:</strong>: {team.tech}</p>
-                  <p>Admin: {team.adminName}<span><img className='navbar-profilepic img-circle' src={team.adminAvatar ? team.adminAvatar : "http://www.liveanimalslist.com/birds/images/hen-white-and-black-color.jpg" } /></span>
+                  <p>Admin: {team.adminName}<span><img data-id={team.Admin} className='navbar-profilepic img-circle' src={team.adminAvatar ? team.adminAvatar : "http://www.liveanimalslist.com/birds/images/hen-white-and-black-color.jpg" } /></span>
                   </p>
                 </div>
               </div>
