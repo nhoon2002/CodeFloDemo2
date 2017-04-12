@@ -40,9 +40,8 @@ class Header extends React.Component {
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span>
                 </button>
+
                   <img src='/assets/img/loading2.gif' className="Header-logo" alt="logo" />
-
-
               </div>
 
 
@@ -51,7 +50,6 @@ class Header extends React.Component {
                   <li><Link to="/">Home</Link></li>
                   <li><Link to="/profile">Profile</Link></li>
                   <li><Link to="/newproject">Projects</Link></li>
-
 
                   <li><AsyncExample {...this.props}/></li>
 
@@ -87,8 +85,8 @@ class Header extends React.Component {
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span>
                 </button>
-                  <img src='/assets/img/loading2.gif' className="Header-logo" alt="logo" />
 
+                  <img src='/assets/img/loading2.gif' className="Header-logo" alt="logo" />
 
               </div>
 
@@ -96,10 +94,7 @@ class Header extends React.Component {
               <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul className="nav navbar-nav">
                   <li><Link to="/">Home</Link></li>
-
-
                 </ul>
-
               </div>
             </div>
           </nav>

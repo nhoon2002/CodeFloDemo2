@@ -240,6 +240,7 @@ router.post('/teams', function(req, res){
       teamAdmin: req.body.userID,
       adminAvatar: req.body.avatar,
       adminName: req.body.adminUsername,
+
     };
 
     var obj = {};

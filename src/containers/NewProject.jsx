@@ -15,7 +15,7 @@
 //
 import React, { Component } from 'react';
 
-// import ProjectForm from '../components/forms/ProjectForm.jsx';
+
 import ProjectList from '../components/forms/ProjectList.jsx';
 class NewProject extends Component {
 
@@ -24,8 +24,6 @@ class NewProject extends Component {
 	render(){
    return(
 		 <div className='container'>
-
-
 
 			 <ProjectForm
 
@@ -37,11 +35,12 @@ class NewProject extends Component {
 				 user={this.props.CheckSeshUserID}
 				 //  updateTeams = {this.props.updateTeams
 			 />
+
 			<ProjectList {...this.props}/>
 
 
 		</div>
-   )
+   		)
    }
 }
 

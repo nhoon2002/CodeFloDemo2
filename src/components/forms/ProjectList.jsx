@@ -43,11 +43,13 @@ class ProjectList extends React.Component {
 
     browserHistory.push('/profile/' + id)
   }
- 
+
+
 
 
   render() {
-
+    // const reverseState = this.state.teams.reverse()
+    let nothing = null;
     const size = 5
 
     return (
@@ -66,14 +68,14 @@ class ProjectList extends React.Component {
                 <Link to={'/newproject/' + team._id}>
                 <span><h1 className='coverflow_h1' data-mid={team._id}>{team.teamname}</h1></span>
                 <div>
-                <img className='img-circle carousel' src='https://placehold.it/70x70/?text=admin'/>
+                  <h4>
+                    {team.adminName}
+                  </h4>
+                  <span><img className='navbar-profilepic img-circle' src={team.adminAvatar ? team.adminAvatar : "http://www.liveanimalslist.com/birds/images/hen-white-and-black-color.jpg" } /></span>
+
                 </div>
                 </Link>
               </div>
-
-
-
-
 
             )}
 
@@ -82,34 +84,31 @@ class ProjectList extends React.Component {
         </Coverflow>
 
         <ProjectForm
-
           open={this.props.openModalT}
           close={this.props.closeModalT}
           show={this.props.teamModal}
           create={this.props.createTeam}
           router={this.props.router}
-          user={this.props.CheckSeshUserID}
-          //  updateTeams = {this.props.updateTeams
+          user={this.props.CheckSeshUser}
         />
 
         <div className="docs-card-example">
-
-
-
           <div className='row'>
 
             {this.state.teams.map((team, i) =>
-              <div className='col-md-4 col-lg-3 col-sm-6'>
-                <div className="pt-card pt-elevation-2 pt-interactive" key={i}>
+              <div className='col-md-4 col-lg-3 col-sm-6' key={i}>
+                <div className="pt-card pt-elevation-2 pt-interactive" >
                   <Link to={'/newproject/' + team._id}>
                     <h3 className="pt-card-h3" data-mid={team._id}>{team.teamname}</h3>
                   </Link>
                   <p data-mid={team._id}><strong>Tech Stack</strong>: {team.tech}</p>
                   <p data-mid={team._id}><br /><strong>Description:</strong>: {team.tech}</p>
+                  <p>Admin: {team.adminName}<span><img className='navbar-profilepic img-circle' src={team.adminAvatar ? team.adminAvatar : "http://www.liveanimalslist.com/birds/images/hen-white-and-black-color.jpg" } /></span>
+                  </p>
                 </div>
               </div>
-
               )}
+
           </div>
         </div>
 
@@ -121,8 +120,11 @@ class ProjectList extends React.Component {
               <h1>{team.adminName}<span><img className='navbar-profilepic img-circle' src={team.adminAvatar ? team.adminAvatar : "http://www.liveanimalslist.com/birds/images/hen-white-and-black-color.jpg" } /></span></h1>
             </div>
           )}
-        </div>
       }
+
+      </div>
+    );
+  }
 }
 
 export default ProjectList;
