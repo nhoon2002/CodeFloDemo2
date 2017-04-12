@@ -472,3 +472,7 @@ div.coverflowdiv2 {
 	.red span {
 		background: rgba(133,32,28,.7);
 	}
+
+  p.techStack {
+    overflow: auto;
+  }
