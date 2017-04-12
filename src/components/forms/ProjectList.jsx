@@ -70,7 +70,7 @@ class ProjectList extends React.Component {
               <div className='coverflowdiv' key={i}>
                 <Link to={'/newproject/' + team._id}>
                 <span><h1 className='coverflow_h1' data-mid={team._id}>{team.teamname}</h1></span>
-                <div>
+                <div className="coverflowdiv2">
                   <h4>
                     {team.adminName}
                   </h4>
