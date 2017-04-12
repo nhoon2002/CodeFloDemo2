@@ -7,51 +7,49 @@ import LoginModal from '../components/LoginModal.jsx';
 
 
 const Home = React.createClass ({
-	render() {
+    render() {
 
-        let random = null;
+       // let random = null;
 
-        return (
-        <div>
+       return (
+       <div>
 
-            <div className="jumbotron home">
-                <h1 className="homeBanner">Welcome to</h1>
-				    <img className="homeLogo" src='assets/img/loading2.gif' alt="logofull"/>
+               {
+                   this.props.isLoggedInCheck || this.props.isLoggedInReg
 
+                   ?
+                                        <div className="jumbotron home">
+                                            <h1 className="homeBanner">Login Success!</h1>
+                                        </div>
 
-                {
-                    this.props.isLoggedInCheck || this.props.isLoggedInReg
+                   :
+                                        <div className="jumbotron home">
+                                            <h1 className="homeBanner">Welcome!</h1>
 
-                    ?
+                   <Register
+                       open={this.props.openModal}
+                       close={this.props.closeModal}
+                       show={this.props.showModal}
+                       create={this.props.createUser}
+                       regErr={this.props.errorMsgs}
+                   />
 
-                    random
-
-                    :
-                    <div>
-                    <Register
-                        open={this.props.openModal}
-                        close={this.props.closeModal}
-                        show={this.props.showModal}
-                        create={this.props.createUser}
-                        regErr={this.props.errorMsgs}
-                    />
-
-                    <LoginModal
-                        open={this.props.openModalL}
-                        close={this.props.closeModalL}
-                        show={this.props.loginModal}
-                        logg={this.props.login}
-                    />
-                    </div>
-                }
-
-            </div>
+                   <LoginModal
+                       open={this.props.openModalL}
+                       close={this.props.closeModalL}
+                       show={this.props.loginModal}
+                       logg={this.props.login}
+                   />
+                   </div>
+               }
 
 
-        </div>
 
-    );
-  }
+
+       </div>
+
+   );
+ }
 
 });
 

@@ -44,13 +44,12 @@ class LoginModal extends Component {
       return (
         <div>
 
+          <button type="button" className="pt-button pt-large pt-intent-warning" onClick={this.open}>
+    			 <span className="pt-icon-standard pt-icon-log-in"></span>
+    			 Login
+    			 {/* <span className="pt-pt-align-right"></span> */}
+    			</button>
 
-          <Button
-            bsStyle="primary"
-            onClick={this.open}
-          >
-            Login
-          </Button>
 
           <Modal show={this.props.show} onHide={this.close}>
             <Modal.Header closeButton>

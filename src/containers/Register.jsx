@@ -81,12 +81,12 @@ class Register extends Component {
 			// ) : success}
 
 		return ( <div>
-			<Button
-				bsStyle="primary"
-				onClick={this.open}
-			>
-				Register
-			</Button>
+			<button type="button" className="pt-button pt-large pt-intent-primary" onClick={this.open}>
+			 <span className="pt-icon-standard pt-icon-swap-horizontal"></span>
+			 Register
+			 {/* <span className="pt-pt-align-right"></span> */}
+			</button>
+
 
 
 			<Modal show={this.props.show} onHide={this.close}>

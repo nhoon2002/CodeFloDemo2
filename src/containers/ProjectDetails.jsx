@@ -22,7 +22,10 @@ class ProjectDetails extends React.Component {
     console.log("ID IN componentDidMount PROEJECT DETAILS", id)
 
     this.props.teamDetails(id).then(() => {
-      if(this.props.CheckSeshUser.avatar){
+      if
+      ( (this.props.CheckSeshUser.avatar) &&
+        (this.props.CheckSeshUserID === this.props.teamDet.adminID)
+      ) {
         var updateAvatar = {
           avatar: this.props.CheckSeshUser.avatar,
           id
@@ -77,8 +80,8 @@ class ProjectDetails extends React.Component {
       }
 
     }
-    
-    if(this.props.CheckSeshUserID === this.props.teamDet.adminID){ 
+
+    if(this.props.CheckSeshUserID === this.props.teamDet.adminID){
       adminPresent = true;
     }
 
@@ -101,29 +104,29 @@ class ProjectDetails extends React.Component {
           <Tasks {...this.props} members={members} />
           {
 
-            adminPresent 
+            adminPresent
 
-            ? 
+            ?
               <div>
                 <Button className="createButton" bsStyle="info" data-member-id={members._id} onClick={this.open}>
                   Assign a Task
                 </Button>
               </div>
-           
-            : 
+
+            :
 
             nothing
 
           }
         </div>
-        
-      ) 
+
+      )
     }
 
 
     return (
-      //One of the problems was previously I had this.props.teamDetails, but this did not work since I already had an 
-      //action function called teamDetail. That is why it was not recognizing this.props.teamDetails._id etc, 
+      //One of the problems was previously I had this.props.teamDetails, but this did not work since I already had an
+      //action function called teamDetail. That is why it was not recognizing this.props.teamDetails._id etc,
       //because teamDetails was a function. In the react dev tool it was also showing as a function and not the state
       //properties I needed
       <div className='container'>
@@ -139,9 +142,9 @@ class ProjectDetails extends React.Component {
               <h2>Project Details</h2>
               <h3>{this.props.teamDet.teamInfo.description}</h3>
               <h2>Team Members</h2>
-      
+
                   {teamMems}
-              
+
               {
 
                 joined || adminPresent
@@ -156,7 +159,7 @@ class ProjectDetails extends React.Component {
 
               }
 
-              <TasksForms {...this.props} /> 
+              <TasksForms {...this.props} />
             </div>
 
       </div>

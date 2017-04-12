@@ -25,17 +25,6 @@ class NewProject extends Component {
    return(
 		 <div className='container'>
 
-			 <ProjectForm
-
-				 open={this.props.openModalT}
-				 close={this.props.closeModalT}
-				 show={this.props.teamModal}
-				 create={this.props.createTeam}
-				 router={this.props.router}
-				 user={this.props.CheckSeshUserID}
-				 //  updateTeams = {this.props.updateTeams
-			 />
-
 			<ProjectList {...this.props}/>
 
 
