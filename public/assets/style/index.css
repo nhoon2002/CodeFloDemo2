@@ -284,6 +284,7 @@ border: #E1E3E5 solid 10px;
 .coverflow_h1 {
   overflow: hidden;
   height: 80px;
+  color: silver;
 }
 
 div.coverflow__container__1P-xE[style] {
