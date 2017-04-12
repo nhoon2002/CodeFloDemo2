@@ -14,6 +14,7 @@ import { teamCreateReducer } from "./teamCreateReducer";
 import { teamDetailsReducer } from "./teamDetails.js";
 import { TaskReducer } from "./taskReducer";
 // import { setTeamIdReducer } from "./setTeamIdReducer.js";
+import { profiletwoReducer } from "./profiletwoReducer.js";
 
 const rootReducer = combineReducers({
 	regErrReducer,
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
 	teamCreateReducer,
 	teamDetailsReducer,
 	TaskReducer,
+	profiletwoReducer,
 	routing: routerReducer
 });
 export default rootReducer;

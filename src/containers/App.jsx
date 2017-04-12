@@ -40,7 +40,8 @@ function mapStateToProps (state) {
 			admin: state.teamDetailsReducer.admin,
 			adminID: state.teamDetailsReducer.adminID,
 			members: state.teamDetailsReducer.teamMembers
-		}
+		},
+		dynamicUser: state.profiletwoReducer.member
 
 	};
 }

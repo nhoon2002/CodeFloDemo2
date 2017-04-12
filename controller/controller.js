@@ -135,9 +135,24 @@ router.post('/updatemember/:userid/:teamid', function(req, res) {
           console.log("obj from Team query", obj);
           obj.teamUser= doc;
           res.json(obj);
-        })
-    })
-})
+        });
+    });
+});
+
+router.get('/profile-two/:id', function(req, res){
+  console.log("PROFILE TWO REQ PARAMS", req.params.id)
+
+  monUser.findById({ "_id": req.params.id}, function(err, doc){
+    console.log("PROFILE TWO DOCS", doc);
+
+    if(err){
+      console.log(err);
+    }else{
+      res.json(doc)
+    }
+
+  });
+});
 
 router.get('/populate', function(req, res) {
     //  var obj = {};
@@ -222,7 +237,9 @@ router.post('/teams', function(req, res){
       teamname: req.body.teamname,
       description: req.body.description,
       tech: req.body.tech,
-      teamAdmin: req.body.userID
+      teamAdmin: req.body.userID,
+      adminAvatar: req.body.avatar,
+      adminName: req.body.adminUsername
 
     };
 
@@ -301,7 +318,7 @@ router.get('/logout', function(req, res){
 router.post('/savepic/:id', function(req, res){
   console.log("REQ PARAMS", req.params.id)
   console.log("REQ BODY", req.body.avatarURL)
-  monUser.findOneAndUpdate({ "_id": req.params.id}, { "avatar": req.body.avatarURL }, {"new": true }).exec(function(err, doc){
+  monUser.findOneAndUpdate({ "_id": req.params.id}, { "avatar": req.body.avatarURL }, { "new": true }).exec(function(err, doc){
     if(err){
       console.log(err);
     }else{
@@ -313,6 +330,14 @@ router.post('/savepic/:id', function(req, res){
     }
   });
 });
+
+router.post('/avatar-projectlist', function(req, res){
+  console.log("REQ BODY AVATAR PROJECT LIST", req.body);
+  console.log("AVATAR REQ BODY", req.body.avatar);
+  Team.findOneAndUpdate({ "_id": req.body.id }, { "adminAvatar": req.body.avatar}, { "new": true }).exec(function(err, doc){
+    res.json(doc);
+  })
+})
 
 // router.post('/edit/username', function(req, res){
 

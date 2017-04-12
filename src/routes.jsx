@@ -6,7 +6,7 @@ import App from './containers/App.jsx';
 
 import Home from './containers/Home.jsx';
 import Profile from './containers/Profile.jsx';
-import ProfileDynamic from './containers/ProfileDynamic.jsx';
+import ProfileTwo from './containers/Profile2.jsx';
 
 import Register from './containers/Register.jsx';
 import NewProject from './containers/NewProject.jsx';
@@ -14,7 +14,7 @@ import NewProject from './containers/NewProject.jsx';
 
 import ProjectDetails from './containers/ProjectDetails.jsx'
 import { checkSession } from './actions/usersAction';
-import Carousel from './containers/Carousel.jsx'
+
 
 
 const checkSesh = () => {
@@ -30,10 +30,12 @@ const theRoutes = (
 
 		      <IndexRoute onEnter={checkSesh} component={Home}/>
 		      <Route path="/profile" onEnter={checkSesh} component= {Profile} />
-		      <Route path="/profile/:user" onEnter={checkSesh} component= {ProfileDynamic} />
-		      <Route path="/newproject" onEnter={checkSesh} component= {NewProject} />
+		      <Route path="/profile/:id" onEnter={checkSesh} component= {ProfileTwo} />
 		      <Route path="/newproject/:id" onEnter={checkSesh} component= {ProjectDetails} />
-		      <Route path="/carousel" onEnter={checkSesh} component= {Carousel} />
+
+		      <Route path="/newproject" onEnter={checkSesh} component= {NewProject} />
+
+
 
 
 		    </Route>

@@ -21,7 +21,17 @@ class ProjectDetails extends React.Component {
     var id = this.props.router.params.id
     console.log("ID IN componentDidMount PROEJECT DETAILS", id)
 
-    this.props.teamDetails(id);
+    this.props.teamDetails(id).then(() => {
+      if(this.props.CheckSeshUser.avatar){
+        var updateAvatar = {
+          avatar: this.props.CheckSeshUser.avatar,
+          id
+        }
+        axios.post('/avatar-projectlist', updateAvatar).then((data) => {
+          console.log("DATAAA", data)
+        })
+      }
+    })
   }
 
   handleJoin(e) {
@@ -49,11 +59,25 @@ class ProjectDetails extends React.Component {
 
   render() {
 
-    const { members } = this.props.teamDet;
+    const { members, teamInfo } = this.props.teamDet;
     console.log("TEAM MEMBERS ARRAY", members)
 
     let nothing = null;
     var adminPresent = false;
+    var joined = false;
+
+    if(members.length > 0){
+
+      for(var i = 0; i < members.length ; i++ ){
+        console.log("HEEEYYYYYYYYYYYY")
+        if(this.props.CheckSeshUserID === members[i]._id){
+          console.log("MATCHEDDDD")
+          joined = true;
+        }
+      }
+
+    }
+    
     if(this.props.CheckSeshUserID === this.props.teamDet.adminID){ 
       adminPresent = true;
     }
@@ -64,9 +88,15 @@ class ProjectDetails extends React.Component {
     if(members.length > 0){
       teamMems = members.map((members, i) =>
         <div key={i} className='container'>
-          <h4>{members.username}</h4>
+          <h4>{members.username}<span><img className='navbar-profilepic img-circle' src={members.avatar ? members.avatar : "http://www.liveanimalslist.com/birds/images/hen-white-and-black-color.jpg" } /></span></h4>
 
-    
+        {/*put the part where tasks are displayed into an another component Tasks since before
+        when it was in this component, the map function would give them all the same onClick function
+        that would set the same state to open the Collapse component. By putting it inside its own
+        component and then putting the component inside the map function, each component will have its
+        own version of the state `open`. That is why clicking on one would now not open all of them.
+        It like making a new instance of the Task compoent class with each map and they all have their
+        own copies of the variables/states and functions etc*/}
 
           <Tasks {...this.props} members={members} />
           {
@@ -98,12 +128,12 @@ class ProjectDetails extends React.Component {
       //properties I needed
       <div className='container'>
 
-            <div className='jumbotron teams' data-mid={this.props.teamDet.teamInfo._id} data-admin={this.props.teamDet.adminID}>
+            <div className='container' data-mid={this.props.teamDet.teamInfo._id} data-admin={this.props.teamDet.adminID}>
 
               <h1>Project Name</h1>
               <h3>{this.props.teamDet.teamInfo.teamname}</h3>
               <h2>Project Admin</h2>
-              <h3>{this.props.teamDet.admin}</h3>
+              <h3>{this.props.teamDet.admin}<span><img className='navbar-profilepic img-circle' src={this.props.teamDet.teamInfo.adminAvatar ? this.props.teamDet.teamInfo.adminAvatar : "http://www.liveanimalslist.com/birds/images/hen-white-and-black-color.jpg" } /></span></h3>
               <h2>Technologies and Languages</h2>
               <h3>{this.props.teamDet.teamInfo.tech}</h3>
               <h2>Project Details</h2>
@@ -111,8 +141,21 @@ class ProjectDetails extends React.Component {
               <h2>Team Members</h2>
       
                   {teamMems}
-    
-              <button type='button' onClick={this.handleJoin}>Join Team</button>
+              
+              {
+
+                joined || adminPresent
+
+                ?
+
+                  nothing
+
+                :
+
+                  <button type='button' onClick={this.handleJoin}>Join Team</button>
+
+              }
+
               <TasksForms {...this.props} /> 
             </div>
 

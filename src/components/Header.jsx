@@ -40,7 +40,9 @@ class Header extends React.Component {
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span>
                 </button>
-                  <img src='/assets/img/logo-icon.png' className="Header-logo" alt="logo" />
+
+                  <img src='/assets/img/loading2.gif' className="Header-logo" alt="logo" />
+
 
               </div>
 
@@ -86,7 +88,10 @@ class Header extends React.Component {
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span>
                 </button>
-                  <img src='/assets/img/logo-icon.png' className="Header-logo" alt="logo" />
+
+                  <img src='/assets/img/loading2.gif' className="Header-logo" alt="logo" />
+
+                  {/* <img src='/assets/img/logo-icon.png' className="Header-logo" alt="logo" /> */}
 
               </div>
 

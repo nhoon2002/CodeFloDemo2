@@ -13,7 +13,7 @@ class ProjectList extends React.Component {
     this.state = {
       teams: []
     };
-    // this.handleClick = this.handleClick.bind(this);
+    this.profile = this.profile.bind(this);
   }
 
   componentDidMount() {
@@ -31,23 +31,29 @@ class ProjectList extends React.Component {
         console.log("populate teams",teams);
 
       });
-
-
-
   }
-  // shouldComponentUpdate(nextProps) {
-	// 	if (this.props.teamModal !== nextProps.teamModal) {
-	// 		console.log('ComponentUpdate Received');
-	// 		this.forceUpdate();
-	// 		return true;
-	// 	}
-	// 	return false;
-	// }
+
+
+  profile(event){
+
+    let id = event.target.getAttribute('data-id');
+    // let username = event.target.getAttribute('data-username');
+
+    console.log("ID", id);
+
+    browserHistory.push('/profile/' + id)
+  }
+
 
 
   render() {
-
+    // const reverseState = this.state.teams.reverse()
+    let nothing = null;
     const size = 5
+
+
+
+
 
     return (
       <div className='container'>
@@ -65,7 +71,11 @@ class ProjectList extends React.Component {
                 <Link to={'/newproject/' + team._id}>
                 <span><h1 className='coverflow_h1' data-mid={team._id}>{team.teamname}</h1></span>
                 <div>
-                <img className='img-circle carousel' src='https://placehold.it/70x70/?text=admin'/>
+                  <h4>
+                    {team.adminName}
+                  </h4>
+                  <span><img className='navbar-profilepic img-circle' src={team.adminAvatar ? team.adminAvatar : "http://www.liveanimalslist.com/birds/images/hen-white-and-black-color.jpg" } /></span>
+
                 </div>
                 </Link>
               </div>
@@ -87,7 +97,7 @@ class ProjectList extends React.Component {
           show={this.props.teamModal}
           create={this.props.createTeam}
           router={this.props.router}
-          user={this.props.CheckSeshUserID}
+          user={this.props.CheckSeshUser}
           //  updateTeams = {this.props.updateTeams
         />
         {/* CARDS */}
@@ -104,13 +114,15 @@ class ProjectList extends React.Component {
               </div>
             </div> */}
             {this.state.teams.map((team, i) =>
-              <div className='col-md-4 col-lg-3 col-sm-6'>
-                <div className="pt-card pt-elevation-2 pt-interactive" key={i}>
+              <div className='col-md-4 col-lg-3 col-sm-6' key={i}>
+                <div className="pt-card pt-elevation-2 pt-interactive" >
                   <Link to={'/newproject/' + team._id}>
                     <h3 className="pt-card-h3" data-mid={team._id}>{team.teamname}</h3>
                   </Link>
                   <p data-mid={team._id}><strong>Tech Stack</strong>: {team.tech}</p>
                   <p data-mid={team._id}><br /><strong>Description:</strong>: {team.tech}</p>
+                  <p>Admin: {team.adminName}<span><img className='navbar-profilepic img-circle' src={team.adminAvatar ? team.adminAvatar : "http://www.liveanimalslist.com/birds/images/hen-white-and-black-color.jpg" } /></span>
+                  </p>
                 </div>
               </div>
 
@@ -121,26 +133,6 @@ class ProjectList extends React.Component {
 
 
 
-
-          {/* Using the .reverse() method to show most revent at the top. */}
-
-          {/* {this.state.teams.map((team, i) =>
-            <div className='jumbotron teams general-projects' key={i}>
-              <Link to={'/newproject/' + team._id}>
-              <h1 data-mid={team._id}>{team.teamname}</h1>
-              </Link>
-              <h2 data-mid={team._id}>{team.tech}</h2>
-              <h3 data-mid={team._id}>{team.description}</h3>
-
-              <h3> Members:</h3>
-
-              {team.teamMembers.map((member, j) =>
-              <h3 key={j}>{member.username}</h3>)}
-
-
-
-            </div>
-          )} */}
 
 
 

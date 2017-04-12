@@ -161,10 +161,13 @@ io.on('connection', function(socket) {
 
 
 
+// -------------------------------------------------
+
 
 
 // -------------------------------------------------
-var databaseUri = "mongodb://localhost/sampledatabse100";
+var databaseUri = "mongodb://localhost/sampledatabse1001";
+
 if (process.env.MONGODB_URI) {
 	mongoose.connect(process.env.MONGODB_URI);
 } else {
@@ -181,6 +184,7 @@ database.on("error", function(err) {
 database.once("open", function() {
   console.log("Mongoose connection successful.");
 });
+
 
 
 // -------------------------------------------------
