@@ -19,9 +19,9 @@ const AsyncExample = React.createClass({
         options={this.state.options}
         placeholder="Search for a user..."
         renderMenuItemChildren={(option, props, index) => (
-          <div className="searchBar" onClick={this._handleClick} data-user={option.username}>
+          <div className="searchBar" onClick={this._handleClick} data-user={option._id}>
             <img
-              data-user={option.username}
+              data-user={option._id}
               className='img-circle'
               src=
 
@@ -32,7 +32,7 @@ const AsyncExample = React.createClass({
 
               }}
             />
-            <span data-user={option.username}>{option.username}</span>
+            <span data-user={option._id}>{option.username}</span>
             {/* .login is the username field from the github response. */}
           </div>
 

@@ -60,7 +60,7 @@ class ProjectList extends React.Component {
         <Coverflow width="1400" height="400"
           displayQuantityOfSide={2}
           navigation={true}
-          enableScroll={true}
+          enableScroll={false}
           clickable={true}
           active={2}
           >

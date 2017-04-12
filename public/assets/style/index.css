@@ -279,21 +279,37 @@ border: #E1E3E5 solid 10px;
   /*border: 1px solid*/
 }
 .coverflow__figure__3bk_C {
-  border: 10px solid #B2EBF2;;
+  border: 10px solid #b1dede;;
 }
 .coverflow_h1 {
   overflow: hidden;
-  height: 100px;
-
-
+  height: 80px;
 }
+
+div.coverflow__container__1P-xE[style] {
+
+    width: auto !important;
+    /*height: auto;*/
+}
+div.coverflow__coverflow__53z9A {
+  width: auto;
+  /*height: auto;*/
+}
+
 div.coverflowdiv2 {
-  padding-top: -20px;
+  /*padding-top: -20px;*/
+  height: 120px;
 }
 .coverflow__cover__25-7e {
   padding-top: 20px;
   padding-bot: 10px;
   /*background-color: pink;*/
+  background-image: url("../img/galaxy.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-background-size: cover;
+  background-size: cover;
+
 
 
 }
@@ -311,6 +327,7 @@ div.coverflowdiv2 {
   color:yellow;
 }
 
+
 .docs-card-example {
   margin-top: 50px;
 }
@@ -327,8 +344,9 @@ div.coverflowdiv2 {
 /*/////////////CREATE TEAM BUTTON///////////////*/
 
 
-	.redbtn {
-		/*list-style: none;*/
+	button.redbtn {
+		border: 0;
+    background-color: white;
 		position: relative;
 		display: inline-block;
 		width: 100px;
