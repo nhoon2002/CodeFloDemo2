@@ -12,6 +12,12 @@ var TeamSchema = new Schema({
   teamAdmin: {
     type: String
   },
+  adminAvatar: {
+    type: String
+  },
+  adminName: {
+    type: String
+  },
   description: {
     type: String
   },

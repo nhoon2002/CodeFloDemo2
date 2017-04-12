@@ -2,7 +2,8 @@ export function teamDetailsReducer (state= {
 	teamInfo: "",
 	admin: "",
 	adminID: "",
-	teamMembers: ""
+	teamMembers: "",
+	avatar: ""
 	}, action) {
 
 
@@ -13,7 +14,8 @@ export function teamDetailsReducer (state= {
 				teamInfo: action.payload.teamInfo,
 				admin: action.payload.admin,
 				adminID: action.payload.adminID,
-				teamMembers: action.payload.teamMembers
+				teamMembers: action.payload.teamMembers,
+				avatar: action.payload.avatar
 			}
 		}
 		default: {

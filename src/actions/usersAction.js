@@ -7,7 +7,7 @@ export function addMember(userid, teamid) {
 	return function(dispatch) {
 		console.log("USER ID TEAMUPDATE", userid);
 		console.log("TEAM ID TEAMUPDATE", teamid);
-		axios.post(`/updatemember/${userid}/${teamid}`).then((data) => {
+		return axios.post(`/updatemember/${userid}/${teamid}`).then((data) => {
 					console.log("got to addMember", data);
 
 		})
@@ -268,7 +268,7 @@ export function getPhoto(username, id){
 export function teamDetails(id) {
 	return function(dispatch) {
 		console.log("IDDDD IN ACTION", id)
-	axios.get('/getteaminfo/' + id)
+	return axios.get('/getteaminfo/' + id)
       .then(res => {
         console.log("response team details", res);
         // const currentteam = res.data[0];
@@ -321,6 +321,15 @@ export function populateTasks(projectID, userID){
 		return axios.get('/populate-tasks/' + projectID + '/' + userID).then((res) => {
 			console.log("RESPONSE IN POPULATE TASKS ACTIONS", res)
 			dispatch({ type: "SET_USER_TASKS", payload: res.data.task })
+		})
+	}
+}
+
+export function dynamicProfile(userID){
+	return function (dispatch){
+		axios.get('/profile-two/' + userID).then((data) => {
+			console.log("USER DATA PROFILETWO", data);
+			dispatch({ type: "SET_DYNAMIC_PROFILE_INFO", payload: data.data });
 		})
 	}
 }

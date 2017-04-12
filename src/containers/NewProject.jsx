@@ -32,7 +32,7 @@ class NewProject extends Component {
 		        show={this.props.teamModal}
 		        create={this.props.createTeam}
 				router={this.props.router}
-				user={this.props.CheckSeshUserID}
+				user={this.props.CheckSeshUser}
 					//  updateTeams = {this.props.updateTeams
 	        />
 

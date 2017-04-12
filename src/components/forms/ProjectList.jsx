@@ -11,7 +11,7 @@ class ProjectList extends React.Component {
     this.state = {
       teams: []
     };
-    // this.handleClick = this.handleClick.bind(this);
+    this.profile = this.profile.bind(this);
   }
 
   componentDidMount() {
@@ -29,43 +29,42 @@ class ProjectList extends React.Component {
         console.log("populate teams",teams);
 
       });
-
-
-
   }
-  // shouldComponentUpdate(nextProps) {
-	// 	if (this.props.teamModal !== nextProps.teamModal) {
-	// 		console.log('ComponentUpdate Received');
-	// 		this.forceUpdate();
-	// 		return true;
-	// 	}
-	// 	return false;
-	// }
+
+
+  profile(event){
+
+    let id = event.target.getAttribute('data-id');
+    // let username = event.target.getAttribute('data-username');
+
+    console.log("ID", id);
+
+    browserHistory.push('/profile/' + id)
+  }
  
 
   render() {
     // const reverseState = this.state.teams.reverse()
+    let nothing = null;
+
     return (
       <div className='container'>
 
-          {/* Using the .reverse() method to show most revent at the top. */}
-
           {this.state.teams.map((team, i) =>
-            <Link key={i} to={'/newproject/' + team._id}>
-            <div className='jumbotron teams general-projects'>
+           <div key={i} className='jumbotron teams general-projects'>
+            <Link to={'/newproject/' + team._id}>
               <h1 data-mid={team._id}>{team.teamname}</h1>
+            </Link>
+              <h1>{team.adminName}<span><img className='navbar-profilepic img-circle' src={team.adminAvatar ? team.adminAvatar : "http://www.liveanimalslist.com/birds/images/hen-white-and-black-color.jpg" } /></span></h1>
               <h2 data-mid={team._id}>{team.tech}</h2>
               <h3 data-mid={team._id}>{team.description}</h3>
 
               <h3> Members:</h3>
               {/* {team.teamMembers} */}
               {team.teamMembers.map((member, j) =>
-              <h3 key={j}>{member.username}</h3>)}
-
-
+              <h3 key={j} data-username={member.username} data-id={member._id} onClick={this.profile}>{member.username}<span><img className='navbar-profilepic img-circle' src={member.avatar ? member.avatar : "http://www.liveanimalslist.com/birds/images/hen-white-and-black-color.jpg" } /></span></h3>)}
 
             </div>
-            </Link>
           )}
 
       </div>
