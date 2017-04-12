@@ -119,9 +119,9 @@ class ProjectList extends React.Component {
                   <Link to={'/newproject/' + team._id}>
                     <h3 className="pt-card-h3" data-mid={team._id}>{team.teamname}</h3>
                   </Link>
-                  <p data-mid={team._id}><strong>Tech Stack</strong>: {team.tech}</p>
-                  <p data-mid={team._id}><br /><strong>Description:</strong>: {team.tech}</p>
-                  <p>Admin: {team.adminName}<span><img data-id={team.Admin} className='navbar-profilepic img-circle' src={team.adminAvatar ? team.adminAvatar : "http://www.liveanimalslist.com/birds/images/hen-white-and-black-color.jpg" } /></span>
+                  <p><strong>Admin:</strong> {team.adminName}<span><img data-id={team.Admin} className='navbar-profilepic img-circle' src={team.adminAvatar ? team.adminAvatar : "http://www.liveanimalslist.com/birds/images/hen-white-and-black-color.jpg" } /></span>
+                  <p data-mid={team._id} style="overflow; auto;"><strong>Tech Stack</strong>: {team.tech}</p>
+                  {/* <p data-mid={team._id}><br /><strong>Description:</strong>: {team.description}</p> */}
                   </p>
                 </div>
               </div>
