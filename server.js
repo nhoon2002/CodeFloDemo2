@@ -60,9 +60,18 @@ io.on('connection', function(socket) {
 
 // console.log(socket.client.conn.id);
 	console.log("connected.", socket.id);
-	socket.on('disconnect', function() {
+	socket.on('disconnect', function(user) {
+		if (user) {
+
+
 		console.log("%s disconnected", socket.id);
 		console.log(Object.keys(io.sockets.sockets));
+		sockusers.splice(sockusers.indexOf(user._id), 1);
+		sockusersAvatar.splice(sockusers.indexOf(user._id), 1);
+		sockusersName.splice(sockusers.indexOf(user._id), 1);
+		console.log('after leaving. sockusers:%s', sockusers);
+		io.emit('sockusers', sockusers, sockusersAvatar, sockusersName);
+	}
 		// socket.emit('get clients', 'updating clients after disconect');
 	});
 	socket.on('chat opened', function(user) {

@@ -25,6 +25,11 @@ class Chat extends Component {
 	 this.updateSockusers = this.updateSockusers.bind(this);
 	}
 
+	componentWillUnmount() {
+		clientSocket.emit('disconnect', this.props.CheckSeshUser)
+	}
+
+
 	  close() {
 	    this.setState({ showChat: false });
 		  clientSocket.emit('chat closed', this.props.CheckSeshUser)
@@ -74,15 +79,19 @@ class Chat extends Component {
 		 	 {/* </Link> */}
 			 <Modal show={this.state.showChat} onHide={this.close}>
 			           <Modal.Header closeButton>
-			             <Modal.Title>Lobby</Modal.Title>
+			             <Modal.Title>
+
+									 {this.state.avatars.map((avatar, i) =>
+										 <img className='img-circle' src={avatar} key={i}/>
+									 )}
+								 	</Modal.Title>
+
 			           </Modal.Header>
 			           <Modal.Body>
-							   {this.state.avatars.map((avatar, i) =>
-								  <img className='img-circle' src={avatar} key={i}/>
-							  )}
 
 
-			        			<ChatBox2 {...this.props} clientSocket={clientSocket}/>
+			        			<ChatBox2 {...this.props}
+											 clientSocket={clientSocket}/>
 			           </Modal.Body>
 			           <Modal.Footer>
 			             <Button onClick={this.close}>Close</Button>
