@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../components/Header.jsx';
+import MainFooter from '../components/MainFooter.jsx';
 // import ChatBox2 from '../components/ChatBox2.jsx';
 
 
@@ -29,7 +30,7 @@ class Main extends Component {
 
 
         </div>
-
+        <MainFooter {...this.props}/>
       </div>
 
     );
