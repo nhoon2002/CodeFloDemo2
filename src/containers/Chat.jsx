@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import { Button } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
 import * as Blueprint from "@blueprintjs/core";
+import { Popover, PopoverInteractionKind, Position } from "@blueprintjs/core";
 import io from 'socket.io-client';
 const clientSocket = io();
 
@@ -80,9 +81,27 @@ class Chat extends Component {
 			 <Modal show={this.state.showChat} onHide={this.close}>
 			           <Modal.Header closeButton>
 			             <Modal.Title>
+										 {this.state.avatars.map((avatar, i) =>
+										<Popover key={i}
+											content={(
+												<div>
 
-									 {this.state.avatars.map((avatar, i) =>
-										 <img className='img-circle' src={avatar} key={i}/>
+													<h5>User: {this.state.usernames[i]}</h5>
+
+												</div>
+											)}
+											interactionKind={PopoverInteractionKind.HOVER_TARGET_ONLY}
+											openOnTargetFocus= {true}
+											popoverClassName="pt-popover-content-sizing"
+                			position={Position.BOTTOM}
+                			// useSmartPositioning={true}
+											// autoFocus={true}
+											inline={true}
+											>
+
+										 <img className='img-circle' src={avatar} key={i} alt={`${this.state.usernames[i]}`} />
+									 </Popover>
+
 									 )}
 								 	</Modal.Title>
 

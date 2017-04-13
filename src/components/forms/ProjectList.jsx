@@ -67,7 +67,7 @@ class ProjectList extends React.Component {
               <div className='coverflowdiv' key={i}>
                 <Link to={'/newproject/' + team._id}>
                 <span><h1 className='coverflow_h1' data-mid={team._id}>{team.teamname}</h1></span>
-                <div>
+                <div className="coverflowdiv2">
                   <h4>
                     {team.adminName}
                   </h4>
@@ -111,17 +111,6 @@ class ProjectList extends React.Component {
 
           </div>
         </div>
-
-          {this.state.teams.map((team, i) =>
-           <div key={i} className='jumbotron teams general-projects'>
-            <Link to={'/newproject/' + team._id}>
-              <h1 data-mid={team._id}>{team.teamname}</h1>
-            </Link>
-              <h1>{team.adminName}<span><img className='navbar-profilepic img-circle' src={team.adminAvatar ? team.adminAvatar : "http://www.liveanimalslist.com/birds/images/hen-white-and-black-color.jpg" } /></span></h1>
-            </div>
-          )}
-      }
-
       </div>
     );
   }
