@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import { Link } from 'react-router';
 import { FormGroup, FormControl, ControlLabel, Button, Collapse, Well } from 'react-bootstrap';
 import TasksForms from '../components/forms/tasksForms.jsx';
 import Tasks from '../components/ShowTasks.jsx';
@@ -13,7 +14,6 @@ class ProjectDetails extends React.Component {
 
     this.handleJoin = this.handleJoin.bind(this);
     this.open = this.open.bind(this);
-    // this.openCollapse = this.openCollapse.bind(this);
   }
 
   componentWillMount() {
@@ -42,15 +42,6 @@ class ProjectDetails extends React.Component {
 
     this.props.router.push('/newproject');
   }
-
-  // openCollapse(event) {
-  //   this.setState({open: !this.state.open})
-
-  //   var projectID = this.props.router.params.id;
-  //   var userID = event.target.getAttribute('data-memberID');
-
-  //   this.props.populateTasks(projectID, userID)
-  // }
 
   open(event) {
     this.props.openModalTask()
@@ -91,8 +82,9 @@ class ProjectDetails extends React.Component {
     if(members.length > 0){
       teamMems = members.map((members, i) =>
         <div key={i} className='container'>
-          <h4>{members.username}<span><img className='navbar-profilepic img-circle' src={members.avatar ? members.avatar : "http://www.liveanimalslist.com/birds/images/hen-white-and-black-color.jpg" } /></span></h4>
-
+          <Link to={"/profile/" + members._id}>
+            <h4> {members.username} <span><img className='navbar-profilepic img-circle' src={members.avatar ? members.avatar : "http://www.liveanimalslist.com/birds/images/hen-white-and-black-color.jpg" } /></span></h4>
+          </Link>
         {/*put the part where tasks are displayed into an another component Tasks since before
         when it was in this component, the map function would give them all the same onClick function
         that would set the same state to open the Collapse component. By putting it inside its own
@@ -108,9 +100,9 @@ class ProjectDetails extends React.Component {
 
             ?
               <div>
-                <Button className="createButton" bsStyle="info" data-member-id={members._id} onClick={this.open}>
+                <a className="createButton action-button shadow animate blue" bsStyle="info" data-member-id={members._id} onClick={this.open}>
                   Assign a Task
-                </Button>
+                </a>
               </div>
 
             :
@@ -131,35 +123,53 @@ class ProjectDetails extends React.Component {
       //properties I needed
       <div className='container'>
 
-            <div className='container' data-mid={this.props.teamDet.teamInfo._id} data-admin={this.props.teamDet.adminID}>
+            <div className='container project-det'>
+              <div>
+                <h1>Project Name</h1>
+                <hr />
+                <h5 className="project-det-h5">{this.props.teamDet.teamInfo.teamname}</h5>
+              </div>
+              <div>
+                <hr />
+                <h2>Project Admin</h2>
+                <hr />
+                  <Link to={"/profile/" + this.props.teamDet.adminID}>
+                    <h5 className="project-det-h5">{this.props.teamDet.admin}<span><img className='navbar-profilepic img-circle' src={this.props.teamDet.teamInfo.adminAvatar ? this.props.teamDet.teamInfo.adminAvatar : "http://www.liveanimalslist.com/birds/images/hen-white-and-black-color.jpg" } /></span></h5>
+                  </Link>
+              </div>
+              <div>
+                <hr />
+                <h2>Technologies and Languages</h2>
+                <hr />
+                <h5 className="project-det-h5">{this.props.teamDet.teamInfo.tech}</h5>
+              </div>
+              <div>
+                <hr />
+                <h2>Project Details</h2>
+                <hr />
+                <h5 className="project-det-h5">{this.props.teamDet.teamInfo.description}</h5>
+              </div>
+                <hr />
+                <h2>Team Members</h2>
+                <hr />
 
-              <h1>Project Name</h1>
-              <h3>{this.props.teamDet.teamInfo.teamname}</h3>
-              <h2>Project Admin</h2>
-              <h3>{this.props.teamDet.admin}<span><img className='navbar-profilepic img-circle' src={this.props.teamDet.teamInfo.adminAvatar ? this.props.teamDet.teamInfo.adminAvatar : "http://www.liveanimalslist.com/birds/images/hen-white-and-black-color.jpg" } /></span></h3>
-              <h2>Technologies and Languages</h2>
-              <h3>{this.props.teamDet.teamInfo.tech}</h3>
-              <h2>Project Details</h2>
-              <h3>{this.props.teamDet.teamInfo.description}</h3>
-              <h2>Team Members</h2>
+                    {teamMems}
 
-                  {teamMems}
+                {
 
-              {
+                  joined || adminPresent
 
-                joined || adminPresent
+                  ?
 
-                ?
+                    nothing
 
-                  nothing
+                  :
 
-                :
+                    <a className="action-button shadow animate yellow" onClick={this.handleJoin}>Join Team</a>
 
-                  <button type='button' onClick={this.handleJoin}>Join Team</button>
+                }
 
-              }
-
-              <TasksForms {...this.props} />
+                <TasksForms {...this.props} />
             </div>
 
       </div>

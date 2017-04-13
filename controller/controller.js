@@ -239,9 +239,11 @@ router.post('/teams', function(req, res){
       tech: req.body.tech,
       teamAdmin: req.body.userID,
       adminAvatar: req.body.avatar,
-      adminName: req.body.adminUsername
+      adminName: req.body.adminUsername,
 
     };
+
+    console.log("ADMIN ID", req.body.userID)
 
     var obj = {};
 
@@ -251,10 +253,13 @@ router.post('/teams', function(req, res){
          console.log(err);
       } else {
          console.log("NEW TEAM CREATION DOCS", doc);
-         res.json(doc);
-         // obj.newTeam = doc;
+         // res.json(doc);
+         obj.newTeam = doc;
 
-         // monUser.
+         monUser.findOneAndUpdate({ "_id": req.body.userID }, { $push: { "adminTeams": doc._id } }).exec(function(err, doc){
+          console.log("DOC IN PUSH TO ADMIN TEAMS", doc)
+          res.json(obj);
+         });
 
 
       }
@@ -318,15 +323,29 @@ router.get('/logout', function(req, res){
 router.post('/savepic/:id', function(req, res){
   console.log("REQ PARAMS", req.params.id)
   console.log("REQ BODY", req.body.avatarURL)
-  monUser.findOneAndUpdate({ "_id": req.params.id}, { "avatar": req.body.avatarURL }, { "new": true }).exec(function(err, doc){
+  monUser.findOneAndUpdate({ "_id": req.params.id}, { "avatar": req.body.avatarURL }, { "new": true }).populate("adminTeams").exec(function(err, doc){
     if(err){
       console.log(err);
     }else{
-      console.log("DOCS", doc)
-        req.session.userID = doc._id;
-        req.session.userData = doc;
-        console.log("DOCS IN LOGIN ROUTE", doc)
-        res.json({sessionUserId: req.session.userID, sessionInfo: req.session.userData})
+      console.log("\n\n")
+      console.log("SAVE PIC DOCS", doc)
+      console.log("\n\n")
+
+      if(doc.adminTeams.length > 0){
+        for(var x = 0; x < doc.adminTeams.length; x++){
+          Team.findOneAndUpdate({ "_id": doc.adminTeams[x]._id}, { "adminAvatar": doc.avatar }, { "new": true }).exec(function(err, doc){
+            if(err){
+              console.log(err)
+            }else{
+              console.log("\n\n")
+              console.log("UPDATE TEAM ADMIN AVATAR DOC", doc)
+            }
+          })
+        }
+      }
+      req.session.userID = doc._id;
+      req.session.userData = doc;
+      res.json({sessionUserId: req.session.userID, sessionInfo: req.session.userData})
     }
   });
 });

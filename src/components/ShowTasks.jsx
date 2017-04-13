@@ -13,6 +13,16 @@ class Tasks extends Component {
 		this.openCollapse = this.openCollapse.bind(this);
 	}
 
+	// componentWillReceiveProps(){
+		// var val = document.getElementById('showTask').getAttribute('data-memberID');
+		// this.props.populateTasks(projectID, userID).then(() => {
+	 //    	this.setState({tasks: this.props.userTasks})
+		// 	console.log("PROPS USER TASKS", this.state.tasks)
+	    	
+	 //    })
+	//  	this.setState({tasks: this.props.userTasks})
+	// }
+
 	openCollapse(event) {
 	    this.setState({open: !this.state.open})
 	    // console.log("TASK SET STATE", this.state.tasks)
@@ -37,19 +47,22 @@ class Tasks extends Component {
 
 		return (
 				<div className="container">
-				  <Button bsStyle="success" className="open-collapse-button" data-memberID={members._id} onClick={this.openCollapse}>View Tasks</Button>
+				  <a className="open-collapse-button action-button shadow animate green" id="showTask" data-memberID={members._id} onClick={this.openCollapse}>View Tasks</a>
 			          <Collapse className="task-collapse" in={this.state.open}>
 			            <div>
-			              <Well>
+			              <Well className="well">
 			              { 
 			                this.state.tasks 
 
 			                ?
 
-			                this.state.tasks.map((task, i) => 
-			                  <p key={i}>{task.task.toString()}</p>
-			                )
-
+			                <ol className="taskList">
+				                {this.state.tasks.map((task, i) => 
+				         
+				                  <li key={i}>{task.task.toString()}</li>
+				               
+				                )}
+			                </ol>
 			                :
 
 			                nothing
