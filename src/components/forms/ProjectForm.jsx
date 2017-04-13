@@ -64,7 +64,7 @@ class ProjectForm extends Component {
 
                <div className='col-md-4 col-lg-4 col-sm-4'></div>
                <div className='col-md-4 col-lg-4 col-sm-4 redbtnDiv'>
-               <button type='button' className='redbtn' onClick={this.open}><a className="round red">Create<span className="round">Add your own team! </span></a></button>
+               <button className='redbtn' onClick={this.open}><a className="round red">Create<span className="round">Add your own team! </span></a></button>
                
                </div>
                <div className='col-md-4 col-lg-4 col-sm-4'></div>
