@@ -1,13 +1,38 @@
 import axios from 'axios';
 import React, { Component, Props }from 'react';
 import {AsyncTypeahead} from 'react-bootstrap-typeahead';
-const AsyncExample = React.createClass({
-  getInitialState() {
-    return {
-      options: [],
-    };
-  },
+class AsyncExample extends Component {
+  constructor(props){
+    super(props);
 
+    this.state = { options: [] };
+    this._handleSearch = this._handleSearch.bind(this)
+    this._handleClick = this._handleClick.bind(this)
+  }
+
+
+  _handleSearch(query) {
+    if (!query) {
+      return;
+    }
+
+
+    fetch(`/register/${query}`)
+    .then(resp => resp.json())
+    // // .then(json => console.log(this))
+    .then(json => this.setState({options: json}))
+
+
+    // this.setState({options: data})
+
+
+
+  }
+  _handleClick(e){
+    var id = e.target.dataset.user;
+    console.log(id);
+    this.props.router.push('/profile/'+id);
+  }
 
   render() {
     return (
@@ -41,29 +66,6 @@ const AsyncExample = React.createClass({
 
 
     );
-  },
-
-  _handleSearch(query) {
-    if (!query) {
-      return;
-    }
-
-
-    fetch(`/register/${query}`)
-      .then(resp => resp.json())
-      // // .then(json => console.log(this))
-      .then(json => this.setState({options: json}))
-
-
-      // this.setState({options: data})
-
-
-
-  },
-  _handleClick(e){
-    var id = e.target.dataset.user;
-    console.log(id);
-    this.props.router.push('/profile/'+id);
   }
-});
+};
 export default AsyncExample;

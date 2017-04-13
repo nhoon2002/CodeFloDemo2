@@ -6,7 +6,7 @@ import LoginModal from '../components/LoginModal.jsx';
 
 
 
-const Home = React.createClass ({
+class Home extends Component {
 	render() {
 
         // let random = null;
@@ -51,7 +51,7 @@ const Home = React.createClass ({
     );
   }
 
-});
+};
 
 
 export default Home;
