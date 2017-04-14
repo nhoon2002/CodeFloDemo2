@@ -160,6 +160,9 @@ img.img-circle {
   margin-left: 210px;
 
 }
+button .actionButtons {
+   margin-left: 350px;
+}
 
 .jumbotron.teams {
   background-color: #B2EBF2;
