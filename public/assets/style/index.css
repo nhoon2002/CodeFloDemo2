@@ -589,8 +589,8 @@ a.yellow{
 	border-bottom: 5px solid #D1B358;
 	text-shadow: 0px -2px #D1B358;
 	position: fixed;
+   top: 142px;
 	left: 220px;
-	top: 141px;
 }
 a.blue
 {
